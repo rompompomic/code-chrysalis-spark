@@ -33,7 +33,7 @@ export default function Index() {
           </div>
 
           {/* Side terms accordion */}
-          <div className="absolute left-[72px] top-[531px] -rotate-90 origin-center">
+          <div className="absolute left-0 bottom-0 -translate-x-[calc(50%-20px)] -rotate-90 origin-center">
             <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 px-4 py-3">
               <ChevronDownIcon className="size-5 rotate-90 text-primary-foreground" />
               <span className="font-outfit font-semibold text-base whitespace-nowrap">
