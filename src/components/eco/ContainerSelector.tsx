@@ -138,14 +138,14 @@ export default function ContainerSelector({ containerType, onContainerTypeChange
         </div>
         <div className="flex flex-wrap gap-3">
           <button
-            className={`font-outfit font-semibold text-base px-4 py-3 rounded-full flex items-center gap-2 transition-colors ${containerType === "buvgruzu" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
+            className={`font-outfit font-semibold text-sm lg:text-base px-3 py-2 lg:px-4 lg:py-3 rounded-full flex items-center gap-2 transition-colors ${containerType === "buvgruzu" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
             onClick={() => onContainerTypeChange("buvgruzu")}
           >
             <WallIcon />
             Būvgružu konteinera noma
           </button>
           <button
-            className={`font-outfit font-semibold text-base px-3 py-2 rounded-full flex items-center gap-2 transition-colors ${containerType === "lielgabarita" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
+            className={`font-outfit font-semibold text-sm lg:text-base px-3 py-2 lg:px-4 lg:py-3 rounded-full flex items-center gap-2 transition-colors ${containerType === "lielgabarita" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
             onClick={() => onContainerTypeChange("lielgabarita")}
           >
             <CouchIcon />
