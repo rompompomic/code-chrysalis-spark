@@ -24,7 +24,7 @@ export default function ContactSection() {
   return (
     <section className="bg-background px-5 lg:px-[130px] py-8 lg:py-14 w-full relative overflow-hidden">
       {/* Decorative Vector */}
-      <div className="absolute h-[1424px] right-[-750px] top-[-550px] w-[1472px] pointer-events-none hidden lg:block">
+      <div className="absolute h-[1424px] right-[-750px] top-[-350px] w-[1472px] pointer-events-none hidden lg:block">
         <div className="absolute inset-0">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1472.41 1424.13">
             <path
