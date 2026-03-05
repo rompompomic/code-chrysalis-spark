@@ -1,0 +1,209 @@
+import { useState } from "react";
+
+type PersonType = "fiziska" | "juridiska";
+
+function PersonToggle({ value, onChange }: { value: PersonType; onChange: (v: PersonType) => void }) {
+  return (
+    <div className="inline-flex">
+      <button
+        onClick={() => onChange("fiziska")}
+        className={`px-5 py-3 rounded-l-full font-outfit font-semibold text-base transition-colors ${
+          value === "fiziska" ? "bg-secondary text-secondary-foreground" : "bg-accent text-secondary-foreground"
+        }`}
+      >
+        Fiziska persona
+      </button>
+      <button
+        onClick={() => onChange("juridiska")}
+        className={`px-5 py-3 rounded-r-full font-outfit font-semibold text-base transition-colors ${
+          value === "juridiska" ? "bg-secondary text-secondary-foreground" : "bg-accent text-secondary-foreground"
+        }`}
+      >
+        Juridiska persona
+      </button>
+    </div>
+  );
+}
+
+function FormField({ label, isTextarea }: { label: string; isTextarea?: boolean }) {
+  return (
+    <div className="self-stretch flex flex-col gap-2">
+      <div className="px-6">
+        <span className="font-outfit font-semibold text-base text-eco-gray">{label}</span>
+      </div>
+      {isTextarea ? (
+        <textarea className="self-stretch h-28 px-6 py-4 rounded-3xl outline outline-1 outline-eco-gray bg-transparent font-outfit text-base text-foreground resize-none focus:outline-secondary focus:outline-2 transition-colors" />
+      ) : (
+        <input className="self-stretch h-14 px-6 py-4 rounded-full outline outline-1 outline-eco-gray bg-transparent font-outfit text-base text-foreground focus:outline-secondary focus:outline-2 transition-colors" />
+      )}
+    </div>
+  );
+}
+
+function CheckboxItem({ children, defaultChecked }: { children: React.ReactNode; defaultChecked?: boolean }) {
+  const [checked, setChecked] = useState(defaultChecked ?? false);
+
+  return (
+    <label className="self-stretch flex items-start gap-2 cursor-pointer">
+      <div className="w-5 h-7 flex items-center justify-center shrink-0 pt-1">
+        <button
+          onClick={() => setChecked(!checked)}
+          className={`w-5 h-5 rounded flex items-center justify-center border transition-colors ${
+            checked ? "bg-secondary border-secondary" : "border-secondary bg-transparent"
+          }`}
+        >
+          {checked && (
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+              <path d="M1 5L4.5 8.5L11 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
+        </button>
+      </div>
+      <span className="flex-1 font-outfit text-base text-eco-gray leading-6">{children}</span>
+    </label>
+  );
+}
+
+type PaymentMethod = "transfer" | "bank" | "card";
+
+function PaymentMethodSelector({ value, onChange }: { value: PaymentMethod; onChange: (v: PaymentMethod) => void }) {
+  return (
+    <div className="self-stretch flex flex-col gap-3">
+      <h3 className="font-outfit font-bold text-lg lg:text-2xl text-eco-gray leading-10">Izvēlies maksājuma metodi</h3>
+      <div className="flex flex-col gap-2">
+        <button
+          onClick={() => onChange("transfer")}
+          className={`self-stretch pl-6 pr-4 py-3 rounded-full font-outfit font-semibold text-base text-secondary-foreground transition-colors ${
+            value === "transfer" ? "bg-secondary" : "bg-accent"
+          }`}
+        >
+          <span className="pb-0.5">Norēķināties ar pārskaitījumu</span>
+        </button>
+
+        <span className="font-outfit font-semibold text-base text-foreground">Vai</span>
+
+        <button
+          onClick={() => onChange("bank")}
+          className={`self-stretch pl-6 pr-4 py-3 rounded-full inline-flex justify-between items-center transition-colors ${
+            value === "bank" ? "bg-secondary" : "bg-accent"
+          }`}
+        >
+          <span className="font-outfit font-semibold text-base text-secondary-foreground pb-0.5">Internetbanka</span>
+          <div className="flex items-center gap-1">
+            {/* Google Pay icon placeholder */}
+            <div className="h-5 px-2 bg-background rounded-full flex items-center">
+              <span className="text-xs font-semibold text-eco-gray">G Pay</span>
+            </div>
+            {/* Apple Pay icon placeholder */}
+            <div className="h-5 px-2 bg-background rounded-full flex items-center">
+              <span className="text-xs font-semibold text-eco-gray"> Pay</span>
+            </div>
+          </div>
+        </button>
+
+        <button
+          onClick={() => onChange("card")}
+          className={`self-stretch pl-6 pr-4 py-3 rounded-full inline-flex justify-between items-center transition-colors ${
+            value === "card" ? "bg-secondary" : "bg-accent"
+          }`}
+        >
+          <span className="font-outfit font-semibold text-base text-secondary-foreground pb-0.5">Apmaksa ar karti</span>
+          <div className="flex items-center gap-1">
+            <div className="h-5 px-2 bg-background rounded-full flex items-center">
+              <span className="text-xs font-bold" style={{ color: "#172B85" }}>VISA</span>
+            </div>
+            <div className="h-5 px-2 bg-background rounded-full flex items-center">
+              <span className="text-xs font-bold" style={{ color: "#E91D25" }}>MC</span>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function OrderSummaryFull() {
+  const details = [
+    { label: "Piegādes adrese", value: "Jaunzemju iela 120 Mārupe Mārupes novads, LV-2167" },
+    { label: "Konteinera tilpums", value: "5 m³" },
+    { label: "Piegādes datums", value: "19.02.2026" },
+    { label: "Savākšanas datums", value: "23.02.2026" },
+    { label: "Maksājuma aprēķins\nBūvniecības atkritumu izvešanas pakalpojums", value: "€ 224.40" },
+    { label: "Konteinera noma noteiktajam periodam", value: "€ 0.00" },
+    { label: "Summa bez PVN", value: "€ 224.40" },
+    { label: "PVN (21%)", value: "€ 47.12" },
+  ];
+
+  return (
+    <div className="self-stretch p-5 bg-background rounded-3xl flex flex-col gap-5">
+      <h3 className="font-outfit font-bold text-lg lg:text-2xl text-eco-gray leading-10">Pasūtījuma informācija</h3>
+      <div className="flex flex-col gap-2">
+        {details.map((item, i) => (
+          <div key={i} className="self-stretch pb-2 border-b border-foreground/20 inline-flex justify-between items-start gap-4">
+            <span className="font-outfit text-sm text-eco-gray leading-5 whitespace-pre-line flex-1">{item.label}</span>
+            <span className="font-outfit text-sm text-eco-gray leading-5 shrink-0">{item.value}</span>
+          </div>
+        ))}
+      </div>
+      <div className="self-stretch inline-flex justify-between items-center">
+        <span className="font-outfit text-base text-eco-gray leading-6">Kopsumma ar PVN:</span>
+        <span className="font-outfit font-black text-lg lg:text-2xl text-foreground leading-6">€ 271.52</span>
+      </div>
+    </div>
+  );
+}
+
+export default function InfoStep() {
+  const [personType, setPersonType] = useState<PersonType>("fiziska");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("transfer");
+
+  return (
+    <div className="self-stretch flex flex-col lg:flex-row gap-6 lg:gap-8">
+      {/* Left: Form */}
+      <div className="flex-1 p-5 rounded-[44px] outline outline-1 outline-secondary flex flex-col gap-5">
+        <PersonToggle value={personType} onChange={setPersonType} />
+
+        <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-5">
+            <FormField label="Vārds, uzvārds" />
+            <FormField label="E-pasts" />
+            <FormField label="Tālrunis" />
+            <FormField label="Norēķinu adrese" />
+            <FormField label="Pasūtījuma piezīmes" isTextarea />
+          </div>
+
+          <div className="max-w-[532px] flex flex-col gap-5">
+            <CheckboxItem>
+              Apliecinu, ka esmu iepazinies ar{" "}
+              <span className="font-semibold underline">Personas datu apstrādes paziņojumu</span>
+              , ķeksis nedrīkst būt ielikts pēc noklusējuma.
+            </CheckboxItem>
+
+            <CheckboxItem>
+              Piekrītu saņemt no SIA &quot;Eco Baltia vide&quot; komerciāla rakstura paziņojumus (t.sk. informāciju par
+              dažāda veida atkritumu apsaimniekošanas pakalpojumiem un klientu apmierinātības aptaujas). Esmu
+              informēts/-a, ka no komerciālu paziņojumu saņemšanas var atteikties, nosūtot e-pastu uz:{" "}
+              <span className="font-semibold">info@ecobaltiavide.lv</span>
+            </CheckboxItem>
+
+            <CheckboxItem>
+              Piekrītu būvniecības atkritumu{" "}
+              <span className="font-semibold underline">konteinera pasūtīšanas un lietošanas noteikumiem</span>
+            </CheckboxItem>
+
+            <CheckboxItem defaultChecked>
+              Esmu informēts, ka konteinerā nedrīkst iekraut bīstamos atkritumus - riepas, šīferis, krāsas un citus,
+              kas atbilstoši MK Nr. 302 no 2011.19.04. noteikumiem kvalificējas kā bīstamie/neatļautie atkritumi.
+            </CheckboxItem>
+          </div>
+        </div>
+      </div>
+
+      {/* Right: Order summary + Payment */}
+      <div className="flex-1 p-5 bg-muted/10 rounded-[44px] flex flex-col gap-5">
+        <OrderSummaryFull />
+        <PaymentMethodSelector value={paymentMethod} onChange={setPaymentMethod} />
+      </div>
+    </div>
+  );
+}

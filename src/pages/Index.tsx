@@ -7,6 +7,7 @@ import NavigationButtons from "@/components/eco/NavigationButtons";
 import WasteRules from "@/components/eco/WasteRules";
 import ContactSection from "@/components/eco/ContactSection";
 import Footer from "@/components/eco/Footer";
+import InfoStep from "@/components/eco/InfoStep";
 import { ChevronDownIcon } from "@/components/eco/SvgIcons";
 
 export type ContainerType = "buvgruzu" | "lielgabarita";
@@ -57,6 +58,7 @@ export default function Index() {
               <ContainerSelector containerType={containerType} onContainerTypeChange={setContainerType} />
             )}
             {currentStep === 2 && <AddressStep />}
+            {currentStep === 4 && <InfoStep />}
 
             <NavigationButtons currentStep={currentStep} onBack={handleBack} onForward={handleForward} />
           </div>
