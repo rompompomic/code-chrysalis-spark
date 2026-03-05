@@ -20,9 +20,10 @@ interface CalendarMonthProps {
   onSelectDate: (date: Date) => void;
   showNavArrow?: boolean;
   onNext?: () => void;
+  today: Date;
 }
 
-function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavArrow, onNext }: CalendarMonthProps) {
+function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavArrow, onNext, today }: CalendarMonthProps) {
   const monthNames = [
     "Janvāris", "Februāris", "Marts", "Aprīlis", "Maijs", "Jūnijs",
     "Jūlijs", "Augusts", "Septembris", "Oktobris", "Novembris", "Decembris"
@@ -76,6 +77,10 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
   const isStart = (date: Date) => startDate ? isSameDay(date, startDate) : false;
   const isEnd = (date: Date) => endDate ? isSameDay(date, endDate) : false;
   const isWeekend = (colIndex: number) => colIndex >= 5;
+  const isPast = (date: Date) => {
+    const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    return date < todayStart;
+  };
 
   return (
     <div className="p-6 bg-background inline-flex flex-col justify-start items-center gap-6">
@@ -138,10 +143,12 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
 
             {row.map((cell, ci) => {
               const weekend = isWeekend(ci);
-              const dimmed = !cell.isCurrentMonth || weekend;
+              const past = isPast(cell.date);
+              const dimmed = !cell.isCurrentMonth || weekend || past;
               const start = isStart(cell.date);
               const end = isEnd(cell.date);
-              const selectable = cell.isCurrentMonth && !weekend;
+              const inRange = isInRange(cell.date);
+              const selectable = cell.isCurrentMonth && !weekend && !past;
 
               return (
                 <button
@@ -151,7 +158,7 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
                     start || end
                       ? "rounded-full"
                       : ""
-                  } ${dimmed ? "opacity-20" : ""} text-foreground`}
+                  } ${dimmed && !inRange && !start && !end ? "opacity-20" : ""} text-foreground`}
                   disabled={!selectable}
                 >
                   {cell.day}
@@ -197,8 +204,8 @@ function OrderSummary() {
 }
 
 export default function PeriodStep() {
-  const now = new Date();
-  const [baseMonth, setBaseMonth] = useState({ year: now.getFullYear(), month: now.getMonth() });
+  const today = new Date();
+  const [baseMonth, setBaseMonth] = useState({ year: today.getFullYear(), month: today.getMonth() });
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [selectingEnd, setSelectingEnd] = useState(false);
@@ -243,6 +250,7 @@ export default function PeriodStep() {
           startDate={startDate}
           endDate={endDate}
           onSelectDate={handleSelectDate}
+          today={today}
         />
         <CalendarMonth
           year={secondMonth.year}
@@ -252,6 +260,7 @@ export default function PeriodStep() {
           onSelectDate={handleSelectDate}
           showNavArrow
           onNext={handleNext}
+          today={today}
         />
       </div>
 
