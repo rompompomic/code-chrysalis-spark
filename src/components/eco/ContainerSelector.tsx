@@ -83,10 +83,10 @@ export default function ContainerSelector() {
       {/* Container sizes + image */}
       <div className="flex flex-col gap-3">
         <h2 className="font-outfit font-bold text-2xl text-foreground leading-[38.4px]">Konteinera izmēru</h2>
-        <div className="flex items-end gap-0">
+        <div className="relative">
           {/* Side terms accordion */}
-          <div className="flex-shrink-0 -mr-[1px]">
-            <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 px-4 py-3 -rotate-90 origin-bottom-left translate-x-[46px] -translate-y-[calc(100%+0px)]">
+          <div className="absolute left-0 bottom-0 z-30" style={{ transform: "rotate(-90deg) translateX(-100%)", transformOrigin: "0 100%" }}>
+            <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 px-4 py-3">
               <ChevronDownIcon className="size-5 rotate-90 text-primary-foreground" />
               <span className="font-outfit font-semibold text-base whitespace-nowrap">
                 Papildu noteikumi un nosacījumi
@@ -96,7 +96,7 @@ export default function ContainerSelector() {
 
           {/* Container box */}
           <div
-            className="relative rounded-3xl outline outline-1 outline-eco-lime overflow-hidden flex-1"
+            className="relative rounded-3xl outline outline-1 outline-eco-lime overflow-hidden"
             style={{ height: 416 }}
           >
             {/* Size selector row */}
