@@ -1,10 +1,15 @@
-// SVG icon components for waste items
-function AsfaltuIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-green-text/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-green-text" />
-    </div>
-  );
+import asfaltuIcon from "@/assets/waste-icons/asfaltu.png";
+import flizesIcon from "@/assets/waste-icons/flizes.png";
+import kiegelusIcon from "@/assets/waste-icons/kiegelus.png";
+import loguIcon from "@/assets/waste-icons/logu.png";
+import metaluIcon from "@/assets/waste-icons/metalu.png";
+import aerosolusIcon from "@/assets/waste-icons/aerosolus.png";
+import ellasIcon from "@/assets/waste-icons/ellas.png";
+import pelnuIcon from "@/assets/waste-icons/pelnu.png";
+import siferiIcon from "@/assets/waste-icons/siferi.png";
+
+function ImgIcon({ src, alt }: { src: string; alt: string }) {
+  return <img src={src} alt={alt} className="size-12 shrink-0 object-contain" />;
 }
 
 function BetonaCementaIcon() {
@@ -45,13 +50,7 @@ function BetonaKonstrukcijasIcon() {
   );
 }
 
-function FlizesIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-green-text/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-green-text" />
-    </div>
-  );
-}
+// FlizesIcon - now uses imported image
 
 function KokmaterialusIcon() {
   return (
@@ -91,38 +90,7 @@ function KokmaterialusIcon() {
   );
 }
 
-function KiegelusIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-green-text/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-green-text" />
-    </div>
-  );
-}
-
-function LoguIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-green-text/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-green-text" />
-    </div>
-  );
-}
-
-function MetaluIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-green-text/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-green-text" />
-    </div>
-  );
-}
-
-// Prohibited icons
-function AerosolusIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-orange/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-orange" />
-    </div>
-  );
-}
+// KiegelusIcon, LoguIcon, MetaluIcon, AerosolusIcon - now use imported images
 
 function AutoRiepasIcon() {
   return (
@@ -162,13 +130,7 @@ function AkumulatorusIcon() {
   );
 }
 
-function EllasIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-orange/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-orange" />
-    </div>
-  );
-}
+// EllasIcon - now uses imported image
 
 function LuminiscencesIcon() {
   return (
@@ -185,41 +147,27 @@ function LuminiscencesIcon() {
   );
 }
 
-function PelnuIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-orange/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-orange" />
-    </div>
-  );
-}
-
-function SiferiIcon() {
-  return (
-    <div className="size-12 rounded-full shrink-0 bg-eco-orange/15 flex items-center justify-center">
-      <div className="size-6 rounded-full bg-eco-orange" />
-    </div>
-  );
-}
+// PelnuIcon, SiferiIcon - now use imported images
 
 const allowedItems: { label: string; icon: React.ReactNode }[] = [
-  { label: "Asfaltu, darvu un darvas produktus – cietos atkritumus, kas rodas, atjaunojot ielu segumu", icon: <AsfaltuIcon /> },
+  { label: "Asfaltu, darvu un darvas produktus – cietos atkritumus, kas rodas, atjaunojot ielu segumu", icon: <ImgIcon src={asfaltuIcon} alt="Asfaltu" /> },
   { label: "Betona, cementa un dzelzsbetona konstrukcijas", icon: <BetonaCementaIcon /> },
   { label: "Betona konstrukcijas", icon: <BetonaKonstrukcijasIcon /> },
-  { label: "Flīzes, keramikas un ģipša materiālus", icon: <FlizesIcon /> },
+  { label: "Flīzes, keramikas un ģipša materiālus", icon: <ImgIcon src={flizesIcon} alt="Flīzes" /> },
   { label: "Kokmateriālus", icon: <KokmaterialusIcon /> },
-  { label: "Ķieģeļus un bruģi", icon: <KiegelusIcon /> },
-  { label: "Logu un durvju rāmjus ar un bez stikliem", icon: <LoguIcon /> },
-  { label: "Metālu saturošas konstrukcijas (dušas, vannas, caurules, stangas, radiatori u.c.)", icon: <MetaluIcon /> },
+  { label: "Ķieģeļus un bruģi", icon: <ImgIcon src={kiegelusIcon} alt="Ķieģeļus" /> },
+  { label: "Logu un durvju rāmjus ar un bez stikliem", icon: <ImgIcon src={loguIcon} alt="Logu" /> },
+  { label: "Metālu saturošas konstrukcijas (dušas, vannas, caurules, stangas, radiatori u.c.)", icon: <ImgIcon src={metaluIcon} alt="Metālu" /> },
 ];
 
 const prohibitedItems: { label: string; icon: React.ReactNode }[] = [
-  { label: "Aerosolus, ķīmiskas vielas, krāsas un to iepakojumus", icon: <AerosolusIcon /> },
+  { label: "Aerosolus, ķīmiskas vielas, krāsas un to iepakojumus", icon: <ImgIcon src={aerosolusIcon} alt="Aerosolus" /> },
   { label: "Auto riepas un citas ar auto uzturēšanu saistītas preces un materiālus", icon: <AutoRiepasIcon /> },
   { label: "Akumulatorus un baterijas", icon: <AkumulatorusIcon /> },
-  { label: "Eļļas", icon: <EllasIcon /> },
+  { label: "Eļļas", icon: <ImgIcon src={ellasIcon} alt="Eļļas" /> },
   { label: "Luminiscences spuldzes un termometrus", icon: <LuminiscencesIcon /> },
-  { label: "Pelnu, karstas ogles un izdedžus", icon: <PelnuIcon /> },
-  { label: "Šīferi", icon: <SiferiIcon /> },
+  { label: "Pelnu, karstas ogles un izdedžus", icon: <ImgIcon src={pelnuIcon} alt="Pelnu" /> },
+  { label: "Šīferi", icon: <ImgIcon src={siferiIcon} alt="Šīferi" /> },
 ];
 
 export default function WasteRules() {
