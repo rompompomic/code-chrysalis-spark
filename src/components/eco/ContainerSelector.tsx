@@ -135,15 +135,6 @@ export default function ContainerSelector() {
       <div className="flex flex-col gap-3">
         <h2 className="font-outfit font-bold text-2xl text-foreground leading-[38.4px]">Konteinera izmēru</h2>
         <div className="relative">
-          {/* Side terms accordion - desktop only (rotated vertical) */}
-          <div className="hidden lg:block absolute left-0 bottom-0 z-30" style={{ transform: "rotate(-90deg) translateX(-100%)", transformOrigin: "0 100%" }}>
-            <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 px-4 py-3">
-              <ChevronDownIcon className="size-5 rotate-90 text-primary-foreground" />
-              <span className="font-outfit font-semibold text-base whitespace-nowrap">
-                Papildu noteikumi un nosacījumi
-              </span>
-            </button>
-          </div>
 
           {/* Container box */}
           <div
