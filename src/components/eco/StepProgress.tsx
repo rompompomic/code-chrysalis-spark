@@ -1,4 +1,4 @@
-import { ContainerIcon, LocationIcon, CalendarIcon, CalendarIconActive, UserIcon } from "./SvgIcons";
+import { ContainerIcon, LocationIcon, CalendarIcon, CalendarIconActive, UserIcon, UserIconActive } from "./SvgIcons";
 
 interface StepProgressProps {
   currentStep?: number;
@@ -36,7 +36,7 @@ const steps: Step[] = [
   { activeIcon: <ContainerIcon />, inactiveIcon: <ContainerIconInactive />, label: "Konteinera veidu un izmēru" },
   { activeIcon: <LocationIconActive />, inactiveIcon: <LocationIcon />, label: "Piegādes adrese" },
   { activeIcon: <CalendarIconActive />, inactiveIcon: <CalendarIcon />, label: "Izmantošanas periods" },
-  { activeIcon: <UserIcon />, inactiveIcon: <UserIcon />, label: "Norēķini" },
+  { activeIcon: <UserIconActive />, inactiveIcon: <UserIcon />, label: "Informācija par pasūtītāju" },
 ];
 
 export default function StepProgress({ currentStep = 1 }: StepProgressProps) {
