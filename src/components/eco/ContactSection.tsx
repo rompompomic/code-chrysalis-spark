@@ -22,10 +22,12 @@ const contacts: ContactPerson[] = [
 
 export default function ContactSection() {
   return (
-    <section className="bg-background px-[135px] py-14 w-full relative overflow-hidden">
-      {/* Decorative blob */}
-      <div className="absolute -right-[200px] -top-[300px] w-[1472px] h-[1424px] opacity-30">
-        <div className="w-full h-full bg-accent rounded-full blur-3xl" />
+    <section className="bg-background px-[130px] py-14 w-full relative overflow-hidden">
+      {/* Decorative Vector */}
+      <div className="absolute right-0 bottom-0 pointer-events-none">
+        <svg width="593" height="419" viewBox="0 0 925 925" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M822.835 0.0332628C623.823 0.0332628 462.5 161.333 462.5 360.317V0.0332628H360.335C161.323 0.0332628 0 161.333 0 360.317V822.85V925H102.165C301.177 925 462.5 763.7 462.5 564.717V925H564.665C763.677 925 925 763.7 925 564.717V0H822.835V0.0332628Z" fill="#ECF3CB"/>
+        </svg>
       </div>
 
       <div className="relative z-10">
@@ -34,7 +36,7 @@ export default function ContactSection() {
         </h2>
 
         <div className="flex flex-col gap-8">
-          <h3 className="font-outfit font-black text-2xl text-foreground">
+          <h3 className="font-outfit font-black text-2xl text-foreground leading-10">
             Būvgružu konteinera noma:
           </h3>
 
@@ -42,14 +44,14 @@ export default function ContactSection() {
             {contacts.map((person) => (
               <div key={person.name} className="flex flex-col gap-5">
                 <div className="flex flex-col gap-0.5">
-                  <span className="font-outfit font-black text-lg text-foreground">
+                  <span className="font-outfit font-black text-lg text-foreground leading-7">
                     {person.name}
                   </span>
-                  <span className="font-outfit text-xs text-primary border border-primary rounded-full px-2 py-1.5 w-fit">
+                  <span className="font-outfit text-xs text-gray-800 border border-gray-800 rounded-full px-2 py-1.5 w-fit leading-3">
                     {person.role}
                   </span>
                 </div>
-                <div className="font-outfit font-light text-base text-foreground leading-relaxed">
+                <div className="font-outfit font-light text-base text-foreground leading-6">
                   <p>tel.: {person.phone}</p>
                   <p>e-pasts: {person.email}</p>
                 </div>
