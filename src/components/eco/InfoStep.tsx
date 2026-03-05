@@ -181,7 +181,7 @@ function OrderSummaryFull() {
       <h3 className="font-outfit font-bold text-lg lg:text-2xl text-eco-gray leading-7 lg:leading-10">Pasūtījuma informācija</h3>
       <div className="flex flex-col gap-2">
         {details.map((item, i) =>
-        <div key={i} className="self-stretch pb-2 border-b border-dashed border-foreground/20 inline-flex justify-start items-start gap-4">
+        <div key={i} className="self-stretch pb-2 border-b border-dashed border-foreground inline-flex justify-start items-start gap-4">
             <span className="font-outfit text-sm text-eco-gray leading-5 whitespace-pre-line flex-1">{item.label}</span>
             <span className="font-outfit text-sm text-eco-gray leading-5 flex-1">{item.value}</span>
           </div>
