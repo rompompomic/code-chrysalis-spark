@@ -7,8 +7,8 @@ interface NavigationButtonsProps {
 }
 
 export default function NavigationButtons({ currentStep = 1, onBack, onForward }: NavigationButtonsProps) {
-  // On step 1, back button is gray; on step 2+, both are lime green (secondary)
   const backIsActive = currentStep > 1;
+  const forwardIsActive = currentStep < 4;
 
   return (
     <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-5 w-full">
@@ -29,13 +29,17 @@ export default function NavigationButtons({ currentStep = 1, onBack, onForward }
 
       {/* Forward button */}
       <button
-        className="flex-1 w-full h-14 bg-secondary rounded-[200px] flex items-center justify-between pl-10"
+        className={`flex-1 w-full h-14 rounded-[200px] flex items-center justify-between pl-10 ${
+          forwardIsActive ? "bg-secondary" : "bg-eco-light-gray"
+        }`}
         onClick={onForward}
       >
-        <span className="font-outfit font-semibold text-xl text-eco-gray flex-1 text-center">
+        <span className={`font-outfit font-semibold text-xl flex-1 text-center ${
+          forwardIsActive ? "text-eco-gray" : "text-primary-foreground"
+        }`}>
           Tālāk
         </span>
-        <NavArrowRightCircle />
+        <NavArrowRightCircle active={forwardIsActive} />
       </button>
     </div>
   );
