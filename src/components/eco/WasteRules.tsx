@@ -1,10 +1,10 @@
 import type { ContainerType } from "@/pages/Index";
-import asfaltuIcon from "@/assets/waste-icons/asfaltu.png";
-import flizesIcon from "@/assets/waste-icons/flizes.png";
-import kiegelusIcon from "@/assets/waste-icons/kiegelus.png";
-import loguIcon from "@/assets/waste-icons/logu.png";
-import metaluIcon from "@/assets/waste-icons/metalu.png";
-import aerosolusIcon from "@/assets/waste-icons/aerosolus.png";
+import asfaltuIcon from "@/assets/waste-icons/asfaltu-new.png";
+import flizesIcon from "@/assets/waste-icons/flizes-new.png";
+import kiegelusIcon from "@/assets/waste-icons/kiegelus-new.png";
+import loguIcon from "@/assets/waste-icons/logu-new.png";
+import metaluIcon from "@/assets/waste-icons/metalu-new.png";
+import aerosolusIcon from "@/assets/waste-icons/aerosolus-new.png";
 import ellasIcon from "@/assets/waste-icons/ellas-new.png";
 import pelnuIcon from "@/assets/waste-icons/pelnu-new.png";
 import siferiIcon from "@/assets/waste-icons/siferi-new.png";
