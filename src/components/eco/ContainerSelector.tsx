@@ -194,11 +194,11 @@ export default function ContainerSelector() {
               className="absolute top-[216px] left-0 right-0 px-6 flex justify-between items-center z-20"
               style={{ width: 787, left: "50%", transform: "translateX(-50%)" }}>
               
-              <button onClick={handlePrev} disabled={selectedIndex === 0} className="disabled:opacity-30 transition-opacity">
-                <ArrowLeftCircle />
+              <button onClick={handlePrev} disabled={selectedIndex === 0} className="transition-opacity">
+                <ArrowLeftCircle disabled={selectedIndex === 0} />
               </button>
-              <button onClick={handleNext} disabled={selectedIndex === containerSizes.length - 1} className="disabled:opacity-30 transition-opacity">
-                <ArrowRightCircle />
+              <button onClick={handleNext} disabled={selectedIndex === containerSizes.length - 1} className="transition-opacity">
+                <ArrowRightCircle disabled={selectedIndex === containerSizes.length - 1} />
               </button>
             </div>
 
