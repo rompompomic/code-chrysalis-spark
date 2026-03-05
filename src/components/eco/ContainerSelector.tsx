@@ -83,70 +83,73 @@ export default function ContainerSelector() {
       {/* Container sizes + image */}
       <div className="flex flex-col gap-3">
         <h2 className="font-outfit font-bold text-2xl text-foreground leading-[38.4px]">Konteinera izmēru</h2>
-        <div
-          className="relative rounded-3xl outline outline-1 outline-eco-lime overflow-hidden"
-          style={{ height: 416 }}
-        >
-          {/* Size selector row */}
-          <div className="flex absolute top-0 left-0 right-0 h-24 z-10">
-            {containerSizes.map((size, i) => (
-              <ContainerSizeCard
-                key={size.volume}
-                size={size}
-                isFirst={i === 0}
-                isLast={i === containerSizes.length - 1}
-              />
-            ))}
+        <div className="flex items-end gap-0">
+          {/* Side terms accordion */}
+          <div className="flex-shrink-0 -mr-[1px]">
+            <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 px-4 py-3 -rotate-90 origin-bottom-left translate-x-[46px] -translate-y-[calc(100%+0px)]">
+              <ChevronDownIcon className="size-5 rotate-90 text-primary-foreground" />
+              <span className="font-outfit font-semibold text-base whitespace-nowrap">
+                Papildu noteikumi un nosacījumi
+              </span>
+            </button>
           </div>
 
-          {/* Container image area */}
-          <div className="absolute top-[95px] left-0 right-0 bottom-0 overflow-hidden flex items-center justify-center">
-            <img src={containerImg} alt="5m³ būvgružu konteiners" className="h-[376px] object-contain" />
-          </div>
-
-          {/* Dimensions card */}
-          <div className="absolute top-[38px] left-5 z-20 bg-background rounded-xl shadow-[0px_1px_4px_rgba(29,56,43,0.25)] p-3 flex flex-col gap-2 text-xs text-primary font-outfit w-[158px]">
-            <div className="flex justify-between">
-              <span>Garums</span>
-              <span className="font-semibold">3.08 m</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Platums</span>
-              <span className="font-semibold">1.90 m</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Augstums</span>
-              <span className="font-semibold">1.25 m</span>
-            </div>
-          </div>
-
-          {/* Navigation arrows */}
+          {/* Container box */}
           <div
-            className="absolute top-[216px] left-0 right-0 px-6 flex justify-between items-center z-20"
-            style={{ width: 787, left: "50%", transform: "translateX(-50%)" }}
+            className="relative rounded-3xl outline outline-1 outline-eco-lime overflow-hidden flex-1"
+            style={{ height: 416 }}
           >
-            <button>
-              <ArrowLeftCircle />
-            </button>
-            <button>
-              <ArrowRightCircle />
-            </button>
+            {/* Size selector row */}
+            <div className="flex absolute top-0 left-0 right-0 h-24 z-10">
+              {containerSizes.map((size, i) => (
+                <ContainerSizeCard
+                  key={size.volume}
+                  size={size}
+                  isFirst={i === 0}
+                  isLast={i === containerSizes.length - 1}
+                />
+              ))}
+            </div>
+
+            {/* Container image area */}
+            <div className="absolute top-[95px] left-0 right-0 bottom-0 overflow-hidden flex items-center justify-center">
+              <img src={containerImg} alt="5m³ būvgružu konteiners" className="h-[376px] object-contain" />
+            </div>
+
+            {/* Dimensions card */}
+            <div className="absolute top-[38px] left-5 z-20 bg-background rounded-xl shadow-[0px_1px_4px_rgba(29,56,43,0.25)] p-3 flex flex-col gap-2 text-xs text-primary font-outfit w-[158px]">
+              <div className="flex justify-between">
+                <span>Garums</span>
+                <span className="font-semibold">3.08 m</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Platums</span>
+                <span className="font-semibold">1.90 m</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Augstums</span>
+                <span className="font-semibold">1.25 m</span>
+              </div>
+            </div>
+
+            {/* Navigation arrows */}
+            <div
+              className="absolute top-[216px] left-0 right-0 px-6 flex justify-between items-center z-20"
+              style={{ width: 787, left: "50%", transform: "translateX(-50%)" }}
+            >
+              <button>
+                <ArrowLeftCircle />
+              </button>
+              <button>
+                <ArrowRightCircle />
+              </button>
+            </div>
+
+            {/* Disclaimer */}
+            <p className="absolute bottom-3 left-5 font-outfit font-light text-base text-eco-light-gray z-20">
+              *Attēlam ir ilustratīva nozīme
+            </p>
           </div>
-
-          {/* Disclaimer */}
-          <p className="absolute bottom-3 left-5 font-outfit font-light text-base text-eco-light-gray z-20">
-            *Attēlam ir ilustratīva nozīme
-          </p>
-        </div>
-
-        {/* Side terms accordion */}
-        <div className="absolute left-0 bottom-0 -translate-x-[calc(50%-20px)] -rotate-90 origin-center">
-          <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 px-4 py-3">
-            <ChevronDownIcon className="size-5 rotate-90 text-primary-foreground" />
-            <span className="font-outfit font-semibold text-base whitespace-nowrap">
-              Papildu noteikumi un nosacījumi
-            </span>
-          </button>
         </div>
       </div>
     </div>
