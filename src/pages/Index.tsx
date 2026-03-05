@@ -15,7 +15,7 @@ export default function Index() {
 
         <section className="bg-background px-5 lg:px-[130px] py-8 lg:py-14 relative">
           {/* Side terms accordion - desktop only (rotated vertical) */}
-          <div className="hidden lg:block absolute left-[72px] bottom-10 z-30" style={{ transform: "rotate(-90deg)", transformOrigin: "0 100%" }}>
+          <div className="hidden lg:block absolute left-[72px] bottom-14 z-30" style={{ transform: "rotate(-90deg)", transformOrigin: "0 100%" }}>
             <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 pl-3 pr-4 py-3">
               <ChevronDownIcon className="size-5 text-primary-foreground" />
               <span className="font-outfit font-semibold text-base whitespace-nowrap">
@@ -40,6 +40,6 @@ export default function Index() {
         <ContactSection />
         <Footer />
       </div>
-    </div>);
-
+    </div>
+  );
 }
