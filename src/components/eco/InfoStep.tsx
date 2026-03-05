@@ -1,4 +1,12 @@
 import { useState } from "react";
+import sebLogo from "@/assets/payment/seb.png";
+import swedbankLogo from "@/assets/payment/swedbank.png";
+import luminorLogo from "@/assets/payment/luminor.png";
+import revolutLogo from "@/assets/payment/revolut.svg";
+import applePayLogo from "@/assets/payment/ApplePay.svg";
+import googlePayLogo from "@/assets/payment/GooglePay.svg";
+import visaLogo from "@/assets/payment/visa-logo.svg";
+import mastercardLogo from "@/assets/payment/mastercard.svg";
 
 type PersonType = "fiziska" | "juridiska";
 
@@ -64,7 +72,7 @@ function CheckboxItem({ children, defaultChecked }: { children: React.ReactNode;
   );
 }
 
-type PaymentMethod = "transfer" | "bank" | "card";
+type PaymentMethod = "transfer" | "bank" | "applegoogle" | "card";
 
 function PaymentMethodSelector({ value, onChange }: { value: PaymentMethod; onChange: (v: PaymentMethod) => void }) {
   return (
@@ -90,13 +98,39 @@ function PaymentMethodSelector({ value, onChange }: { value: PaymentMethod; onCh
         >
           <span className="font-outfit font-semibold text-base text-secondary-foreground pb-0.5">Internetbanka</span>
           <div className="flex items-center gap-1">
-            {/* Google Pay icon placeholder */}
-            <div className="h-5 px-2 bg-background rounded-full flex items-center">
-              <span className="text-xs font-semibold text-eco-gray">G Pay</span>
+            <div className="h-6 px-2 bg-background rounded-full flex items-center">
+              <img src={sebLogo} alt="SEB" className="h-3" />
             </div>
-            {/* Apple Pay icon placeholder */}
-            <div className="h-5 px-2 bg-background rounded-full flex items-center">
-              <span className="text-xs font-semibold text-eco-gray"> Pay</span>
+            <div className="h-6 px-2 bg-background rounded-full flex items-center">
+              <img src={swedbankLogo} alt="Swedbank" className="h-3" />
+            </div>
+            <div className="h-6 px-2 bg-background rounded-full flex items-center justify-center" style={{ backgroundColor: "#d90730" }}>
+              <span className="text-[10px] font-bold text-white leading-none">Citadele</span>
+            </div>
+            <div className="h-6 px-2 bg-background rounded-full flex items-center">
+              <img src={revolutLogo} alt="Revolut" className="h-2.5" />
+            </div>
+            <div className="h-6 px-2 bg-background rounded-full flex items-center">
+              <img src={luminorLogo} alt="Luminor" className="h-3" />
+            </div>
+          </div>
+        </button>
+
+        <span className="font-outfit font-semibold text-base text-foreground">Apple Pay vai Google Pay</span>
+
+        <button
+          onClick={() => onChange("applegoogle")}
+          className={`self-stretch pl-6 pr-4 py-3 rounded-full inline-flex justify-between items-center transition-colors ${
+            value === "applegoogle" ? "bg-secondary" : "bg-accent"
+          }`}
+        >
+          <span className="font-outfit font-semibold text-base text-secondary-foreground pb-0.5">Apple Pay vai Google Pay</span>
+          <div className="flex items-center gap-1">
+            <div className="h-6 px-2 bg-background rounded-full flex items-center">
+              <img src={applePayLogo} alt="Apple Pay" className="h-3" />
+            </div>
+            <div className="h-6 px-2 bg-background rounded-full flex items-center">
+              <img src={googlePayLogo} alt="Google Pay" className="h-3" />
             </div>
           </div>
         </button>
@@ -109,11 +143,11 @@ function PaymentMethodSelector({ value, onChange }: { value: PaymentMethod; onCh
         >
           <span className="font-outfit font-semibold text-base text-secondary-foreground pb-0.5">Apmaksa ar karti</span>
           <div className="flex items-center gap-1">
-            <div className="h-5 px-2 bg-background rounded-full flex items-center">
-              <span className="text-xs font-bold" style={{ color: "#172B85" }}>VISA</span>
+            <div className="h-6 px-2 bg-background rounded-full flex items-center">
+              <img src={visaLogo} alt="Visa" className="h-3" />
             </div>
-            <div className="h-5 px-2 bg-background rounded-full flex items-center">
-              <span className="text-xs font-bold" style={{ color: "#E91D25" }}>MC</span>
+            <div className="h-6 px-2 bg-background rounded-full flex items-center">
+              <img src={mastercardLogo} alt="Mastercard" className="h-3" />
             </div>
           </div>
         </button>
