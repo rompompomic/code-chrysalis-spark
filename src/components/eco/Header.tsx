@@ -31,8 +31,8 @@ export default function Header() {
       <div className="lg:hidden border-b border-border">
         <div className="flex flex-col">
           {/* Top row: CTA buttons + hamburger */}
-          <div className="flex items-center justify-between px-5 py-1.5 border-b border-border">
-            <div className="flex flex-col gap-1.5">
+          <div className="flex items-center justify-end gap-3 px-5 py-1.5 border-b border-border">
+            <div className="flex flex-col gap-1.5 items-end">
               <a href="#" className="bg-eco-lime text-primary font-outfit font-medium text-sm px-4 h-[28px] flex items-center justify-center">
                 Pieteikt pakalpojumu
               </a>
