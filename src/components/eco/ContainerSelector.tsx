@@ -218,13 +218,13 @@ export default function ContainerSelector({ containerType, onContainerTypeChange
             </div>
 
             {/* Container image area */}
-            <div className="relative h-52 overflow-hidden">
+            <div className="relative h-52 overflow-hidden flex flex-col items-center">
               <img
                 src={selected.image}
                 alt={`${selected.volume}${selected.superscript ? "³" : ""} konteiners`}
-                className="w-64 h-48 absolute left-[26px] top-0 object-contain transition-all duration-300" />
+                className="w-64 h-48 object-contain transition-all duration-300" />
 
-              <div className="w-80 px-1 absolute left-0 top-[80px] flex justify-between items-center">
+              <div className="w-full px-4 absolute top-[80px] flex justify-between items-center">
                 <button onClick={handlePrev} disabled={selectedIndex === 0} className="transition-opacity">
                   <ArrowLeftCircle disabled={selectedIndex === 0} />
                 </button>
@@ -233,7 +233,7 @@ export default function ContainerSelector({ containerType, onContainerTypeChange
                 </button>
               </div>
 
-              <p className="absolute left-4 top-[182px] font-outfit font-normal text-sm text-eco-light-gray">
+              <p className="absolute left-0 right-0 text-center top-[182px] font-outfit font-normal text-sm text-eco-light-gray">
                 *Attēlam ir ilustratīva nozīme
               </p>
             </div>
