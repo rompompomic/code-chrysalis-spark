@@ -9,7 +9,7 @@ import pelnuIcon from "@/assets/waste-icons/pelnu.png";
 import siferiIcon from "@/assets/waste-icons/siferi.png";
 
 function ImgIcon({ src, alt }: { src: string; alt: string }) {
-  return <img src={src} alt={alt} className="size-12 shrink-0 object-contain" />;
+  return <img src={src} alt={alt} className="w-12 h-12 shrink-0 object-contain" style={{ minWidth: 48, minHeight: 48 }} />;
 }
 
 function BetonaCementaIcon() {
