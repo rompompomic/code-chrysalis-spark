@@ -24,11 +24,11 @@ export default function ContactSection() {
   return (
     <section className="bg-background px-5 lg:px-[130px] py-8 lg:py-14 w-full relative overflow-hidden">
       {/* Decorative Vector */}
-      <div className="absolute h-[1223px] right-[-750px] top-[-550px] w-[1472px] pointer-events-none hidden lg:block">
+      <div className="absolute h-[1424px] right-[-750px] top-[-550px] w-[1472px] pointer-events-none hidden lg:block">
         <div className="absolute inset-0">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1472.41 1424.13">
             <path
-              d="M822.835 0.0332628C623.823 0.0332628 462.5 161.333 462.5 360.317V0.0332628H360.335C161.323 0.0332628 0 161.333 0 360.317V822.85V925H102.165C301.177 925 462.5 763.7 462.5 564.717V925H564.665C763.677 925 925 763.7 925 564.717V0H822.835V0.0332628Z"
+              d="M894.835 499.167C695.823 499.167 534.5 660.467 534.5 859.451V499.167H432.335C233.323 499.167 72 660.467 72 859.451V1321.98V1424.13H174.165C373.177 1424.13 534.5 1262.83 534.5 1063.85V1424.13H636.665C835.677 1424.13 997 1262.83 997 1063.85V499.134H894.835V499.167Z"
               fill="#ECF3CB"
             />
           </svg>
@@ -36,11 +36,11 @@ export default function ContactSection() {
       </div>
 
       {/* Mobile decorative vector - smaller */}
-      <div className="absolute h-[400px] right-[-200px] top-[-100px] w-[500px] pointer-events-none lg:hidden">
+      <div className="absolute h-[500px] right-[-200px] top-[-100px] w-[500px] pointer-events-none lg:hidden">
         <div className="absolute inset-0">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1472.41 1424.13">
             <path
-              d="M822.835 0.0332628C623.823 0.0332628 462.5 161.333 462.5 360.317V0.0332628H360.335C161.323 0.0332628 0 161.333 0 360.317V822.85V925H102.165C301.177 925 462.5 763.7 462.5 564.717V925H564.665C763.677 925 925 763.7 925 564.717V0H822.835V0.0332628Z"
+              d="M894.835 499.167C695.823 499.167 534.5 660.467 534.5 859.451V499.167H432.335C233.323 499.167 72 660.467 72 859.451V1321.98V1424.13H174.165C373.177 1424.13 534.5 1262.83 534.5 1063.85V1424.13H636.665C835.677 1424.13 997 1262.83 997 1063.85V499.134H894.835V499.167Z"
               fill="#ECF3CB"
             />
           </svg>
