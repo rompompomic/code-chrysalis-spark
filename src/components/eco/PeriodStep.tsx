@@ -7,7 +7,6 @@ function getDaysInMonth(year: number, month: number) {
 }
 
 function getFirstDayOfWeek(year: number, month: number) {
-  // 0=Sun, convert to Mon=0
   const day = new Date(year, month, 1).getDay();
   return day === 0 ? 6 : day - 1;
 }
@@ -19,11 +18,13 @@ interface CalendarMonthProps {
   endDate: Date | null;
   onSelectDate: (date: Date) => void;
   showNavArrow?: boolean;
+  showPrevArrow?: boolean;
   onNext?: () => void;
+  onPrev?: () => void;
   today: Date;
 }
 
-function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavArrow, onNext, today }: CalendarMonthProps) {
+function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavArrow, showPrevArrow, onNext, onPrev, today }: CalendarMonthProps) {
   const monthNames = [
     "Janvāris", "Februāris", "Marts", "Aprīlis", "Maijs", "Jūnijs",
     "Jūlijs", "Augusts", "Septembris", "Oktobris", "Novembris", "Decembris"
@@ -33,11 +34,9 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
   const firstDay = getFirstDayOfWeek(year, month);
   const daysInPrevMonth = getDaysInMonth(year, month === 0 ? 11 : month - 1);
 
-  // Build grid rows of 7
   const rows: { day: number; isCurrentMonth: boolean; date: Date }[][] = [];
   let currentRow: { day: number; isCurrentMonth: boolean; date: Date }[] = [];
 
-  // Previous month fill
   for (let i = firstDay - 1; i >= 0; i--) {
     const d = daysInPrevMonth - i;
     const prevMonth = month === 0 ? 11 : month - 1;
@@ -45,7 +44,6 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
     currentRow.push({ day: d, isCurrentMonth: false, date: new Date(prevYear, prevMonth, d) });
   }
 
-  // Current month
   for (let d = 1; d <= daysInMonth; d++) {
     currentRow.push({ day: d, isCurrentMonth: true, date: new Date(year, month, d) });
     if (currentRow.length === 7) {
@@ -54,7 +52,6 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
     }
   }
 
-  // Next month fill
   if (currentRow.length > 0) {
     let nextDay = 1;
     while (currentRow.length < 7) {
@@ -83,33 +80,37 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
   };
 
   return (
-    <div className="p-6 bg-background inline-flex flex-col justify-start items-center gap-6">
+    <div className="p-6 bg-background inline-flex flex-col justify-start items-center gap-6 w-full lg:w-auto">
       <div className="self-stretch relative inline-flex justify-between items-center">
-        <span className="font-outfit text-lg text-eco-gray">{monthNames[month]} {year}</span>
-        {showNavArrow && (
+        {showPrevArrow ? (
+          <button onClick={onPrev} className="w-6 h-6 rounded-full border border-primary flex items-center justify-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="-0.5" y="0.5" width="23" height="23" rx="11.5" transform="matrix(-1 0 0 1 23 0)" stroke="hsl(var(--primary))" />
+              <path d="M17.1426 11.3571C17.4976 11.3571 17.7854 11.645 17.7854 12C17.7854 12.355 17.4976 12.6429 17.1426 12.6429V12V11.3571ZM6.4023 12.4546C6.15124 12.2035 6.15124 11.7965 6.4023 11.5454L10.4934 7.45431C10.7445 7.20326 11.1515 7.20326 11.4026 7.45431C11.6536 7.70536 11.6536 8.1124 11.4026 8.36345L7.766 12L11.4026 15.6365C11.6536 15.8876 11.6536 16.2946 11.4026 16.5457C11.1515 16.7967 10.7445 16.7967 10.4934 16.5457L6.4023 12.4546ZM17.1426 12V12.6429L6.85686 12.6429V12V11.3571L17.1426 11.3571V12Z" fill="hsl(var(--primary))" />
+            </svg>
+          </button>
+        ) : <div className="w-6" />}
+        <span className="font-outfit text-base lg:text-lg text-eco-gray">{monthNames[month]} {year}</span>
+        {showNavArrow ? (
           <button onClick={onNext} className="w-6 h-6 rounded-full border border-primary flex items-center justify-center">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <rect x="0.5" y="0.5" width="23" height="23" rx="11.5" stroke="hsl(var(--primary))" />
               <path d="M6.85742 11.3571C6.50238 11.3571 6.21456 11.645 6.21456 12C6.21456 12.355 6.50238 12.6429 6.85742 12.6429V12V11.3571ZM17.5977 12.4546C17.8488 12.2035 17.8488 11.7965 17.5977 11.5454L13.5066 7.45431C13.2555 7.20326 12.8485 7.20326 12.5974 7.45431C12.3464 7.70536 12.3464 8.1124 12.5974 8.36345L16.234 12L12.5974 15.6365C12.3464 15.8876 12.3464 16.2946 12.5974 16.5457C12.8485 16.7967 13.2555 16.7967 13.5066 16.5457L17.5977 12.4546ZM6.85742 12V12.6429L17.1431 12.6429V12V11.3571L6.85742 11.3571V12Z" fill="hsl(var(--primary))" />
             </svg>
           </button>
-        )}
+        ) : <div className="w-6" />}
       </div>
 
       <div className="self-stretch flex flex-col gap-5 pb-4">
-        {/* Weekday headers */}
         <div className="px-4 inline-flex justify-center items-center gap-5">
           {WEEKDAYS.map((d, i) => (
             <div key={i} className="size-5 text-center text-muted-foreground text-base font-medium font-outfit leading-4">{d}</div>
           ))}
         </div>
 
-        {/* Day rows */}
         {rows.map((row, ri) => (
           <div key={ri} className="px-4 relative inline-flex justify-center items-center gap-5">
-            {/* Range highlight background */}
             {startDate && endDate && (() => {
-              // Find first and last in-range indices in this row
               const indices = row.map((cell, ci) => {
                 const inRange = isInRange(cell.date) || isStart(cell.date) || isEnd(cell.date);
                 return inRange ? ci : -1;
@@ -122,7 +123,6 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
               const isStartRow = row.some(c => isStart(c.date));
               const isEndRow = row.some(c => isEnd(c.date));
 
-              // Calculate positioning: each cell is 20px (size-5) + 20px gap, px-4 = 16px offset
               const left = first * 40;
               const width = (last - first) * 40 + 20;
 
@@ -155,9 +155,7 @@ function CalendarMonth({ year, month, startDate, endDate, onSelectDate, showNavA
                   key={ci}
                   onClick={() => selectable && onSelectDate(cell.date)}
                   className={`size-5 relative z-10 text-center text-base font-medium font-outfit leading-4 ${
-                    start || end
-                      ? "rounded-full"
-                      : ""
+                    start || end ? "rounded-full" : ""
                   } ${dimmed && !inRange && !start && !end ? "opacity-20" : ""} text-foreground`}
                   disabled={!selectable}
                 >
@@ -181,15 +179,15 @@ function OrderSummary() {
   ];
 
   return (
-    <div className="flex-1 h-96 p-5 bg-muted/20 rounded-3xl inline-flex flex-col justify-between items-start">
-      <div className="self-stretch flex flex-col gap-5">
-        <h3 className="font-outfit font-bold text-2xl text-eco-gray leading-10">
+    <div className="w-full lg:flex-1 lg:h-96 p-5 bg-muted/20 rounded-3xl flex flex-col justify-between items-start gap-5">
+      <div className="self-stretch flex flex-col gap-4 lg:gap-5">
+        <h3 className="font-outfit font-bold text-lg lg:text-2xl text-eco-gray leading-7 lg:leading-10">
           Pasūtījuma informācija
         </h3>
         <div className="self-stretch flex flex-col gap-2">
           {items.map((item, i) => (
-            <div key={i} className="self-stretch pb-2 border-b border-foreground inline-flex justify-between items-center">
-              <span className="font-outfit text-sm text-eco-gray leading-5">{item.label}</span>
+            <div key={i} className="self-stretch pb-2 border-b border-foreground inline-flex justify-between items-start gap-4">
+              <span className="font-outfit text-sm text-eco-gray leading-5 flex-1">{item.label}</span>
               <span className="font-outfit text-sm text-eco-gray leading-5">{item.price}</span>
             </div>
           ))}
@@ -197,7 +195,7 @@ function OrderSummary() {
       </div>
       <div className="self-stretch inline-flex justify-between items-center">
         <span className="font-outfit text-base text-eco-gray leading-6">Kopsumma ar PVN:</span>
-        <span className="font-outfit font-black text-2xl text-foreground leading-6">€ 271.52</span>
+        <span className="font-outfit font-black text-lg lg:text-2xl text-foreground leading-7 lg:leading-6">€ 271.52</span>
       </div>
     </div>
   );
@@ -224,6 +222,13 @@ export default function PeriodStep() {
     });
   };
 
+  const handlePrev = () => {
+    setBaseMonth(prev => {
+      const m = prev.month - 1;
+      return m < 0 ? { year: prev.year - 1, month: 11 } : { year: prev.year, month: m };
+    });
+  };
+
   const handleSelectDate = (date: Date) => {
     if (!selectingEnd || !startDate) {
       setStartDate(date);
@@ -241,9 +246,9 @@ export default function PeriodStep() {
   };
 
   return (
-    <div className="self-stretch inline-flex justify-start items-start gap-8">
-      {/* Calendar container */}
-      <div className="p-5 rounded-3xl outline outline-1 outline-secondary flex justify-start items-start gap-5">
+    <div className="self-stretch flex flex-col lg:flex-row justify-start items-start gap-6 lg:gap-8">
+      {/* Desktop: dual calendar side by side */}
+      <div className="hidden lg:flex p-5 rounded-3xl outline outline-1 outline-secondary justify-start items-start gap-5">
         <CalendarMonth
           year={baseMonth.year}
           month={baseMonth.month}
@@ -259,6 +264,22 @@ export default function PeriodStep() {
           endDate={endDate}
           onSelectDate={handleSelectDate}
           showNavArrow
+          onNext={handleNext}
+          today={today}
+        />
+      </div>
+
+      {/* Mobile: single calendar with both arrows */}
+      <div className="lg:hidden w-full rounded-3xl outline outline-1 outline-secondary overflow-hidden">
+        <CalendarMonth
+          year={baseMonth.year}
+          month={baseMonth.month}
+          startDate={startDate}
+          endDate={endDate}
+          onSelectDate={handleSelectDate}
+          showPrevArrow
+          showNavArrow
+          onPrev={handlePrev}
           onNext={handleNext}
           today={today}
         />
