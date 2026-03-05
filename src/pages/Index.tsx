@@ -3,6 +3,7 @@ import Header from "@/components/eco/Header";
 import StepProgress from "@/components/eco/StepProgress";
 import ContainerSelector from "@/components/eco/ContainerSelector";
 import AddressStep from "@/components/eco/AddressStep";
+import PeriodStep from "@/components/eco/PeriodStep";
 import NavigationButtons from "@/components/eco/NavigationButtons";
 import WasteRules from "@/components/eco/WasteRules";
 import ContactSection from "@/components/eco/ContactSection";
@@ -58,6 +59,7 @@ export default function Index() {
               <ContainerSelector containerType={containerType} onContainerTypeChange={setContainerType} />
             )}
             {currentStep === 2 && <AddressStep />}
+            {currentStep === 3 && <PeriodStep />}
             {currentStep === 4 && <InfoStep />}
 
             <NavigationButtons currentStep={currentStep} onBack={handleBack} onForward={handleForward} />
