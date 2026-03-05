@@ -19,7 +19,7 @@ export default function NavigationButtons({ currentStep = 1, onBack, onForward }
         }`}
         onClick={onBack}
       >
-        <NavArrowLeftCircle />
+        <NavArrowLeftCircle active={backIsActive} />
         <span className={`font-outfit font-semibold text-xl flex-1 text-center ${
           backIsActive ? "text-eco-gray" : "text-primary-foreground"
         }`}>
