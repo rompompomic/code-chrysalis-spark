@@ -1,4 +1,5 @@
 import type { ContainerType } from "@/pages/Index";
+import { WallIcon, CouchIcon } from "./SvgIcons";
 import asfaltuIcon from "@/assets/waste-icons/asfaltu.png";
 import flizesIcon from "@/assets/waste-icons/flizes.png";
 import kiegelusIcon from "@/assets/waste-icons/kiegelus.png";
@@ -253,13 +254,30 @@ const headings: Record<ContainerType, string> = {
   lielgabarita: "LIELGABARĪTA ATKRITUMU KONTEINERĀ IEVIETOT",
 };
 
-export default function WasteRules({ containerType }: { containerType: ContainerType }) {
+export default function WasteRules({ containerType, onContainerTypeChange }: { containerType: ContainerType; onContainerTypeChange: (type: ContainerType) => void }) {
   const allowedItems = containerType === "buvgruzu" ? buvgruzuAllowed : lielgabaritaAllowed;
   const prohibitedItems = containerType === "buvgruzu" ? buvgruzuProhibited : lielgabaritaProhibited;
 
   return (
     <section className="bg-background px-5 lg:px-[130px] py-8 lg:py-14 w-full">
       <div className="max-w-[1170px] flex flex-col gap-6 lg:gap-10">
+        <div className="flex flex-wrap gap-3">
+          <button
+            className={`font-outfit font-semibold text-base px-4 py-3 rounded-full flex items-center gap-2 transition-colors ${containerType === "buvgruzu" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
+            onClick={() => onContainerTypeChange("buvgruzu")}
+          >
+            <WallIcon />
+            Būvgružu konteinera noma
+          </button>
+          <button
+            className={`font-outfit font-semibold text-base px-4 py-3 rounded-full flex items-center gap-2.5 transition-colors ${containerType === "lielgabarita" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
+            onClick={() => onContainerTypeChange("lielgabarita")}
+          >
+            <CouchIcon />
+            Lielgabarīta atkritumu konteinera noma
+          </button>
+        </div>
+
         <h2 className="font-outfit font-bold text-2xl lg:text-5xl text-foreground uppercase">
           {headings[containerType]}
         </h2>
