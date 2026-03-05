@@ -88,12 +88,12 @@ export default function Footer() {
   return (
     <footer className="bg-background w-full">
       {/* Search bar */}
-      <div className="bg-secondary py-10 px-[70px]">
-        <div className="flex items-center justify-between">
-          <h3 className="font-outfit font-bold text-[28px] text-eco-gray">
-            Nevarat atrast kādu informāciju?
+      <div className="bg-secondary py-8 lg:py-10 px-5 lg:px-[70px]">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          <h3 className="font-outfit font-bold text-2xl lg:text-[28px] text-eco-gray leading-7">
+            Nevarat atrast kādu<br className="lg:hidden" /> informāciju?
           </h3>
-          <div className="bg-background w-[600px] h-[60px] flex items-center px-4 gap-3">
+          <div className="bg-background w-full lg:w-[600px] h-[56px] lg:h-[60px] flex items-center px-4 gap-3">
             <svg className="size-5 shrink-0" viewBox="0 0 20 20" fill="none">
               <circle cx="9" cy="9" r="6" stroke="#413F41" strokeWidth="1.5" />
               <path d="M14 14L18 18" stroke="#413F41" strokeWidth="1.5" strokeLinecap="round" />
@@ -111,24 +111,24 @@ export default function Footer() {
       </div>
 
       {/* Footer content */}
-      <div className="px-[50px] pt-8 pb-10">
+      <div className="px-5 lg:px-[50px] pt-8 pb-10">
         {/* Logo */}
-        <img src={logoNew} alt="Eco Baltia Vide" className="h-[46px] w-auto mb-8" />
+        <img src={logoNew} alt="Eco Baltia Vide" className="h-[36px] lg:h-[46px] w-auto mb-6 lg:mb-8" />
 
         {/* Nav + Social + Scroll-to-top row with border */}
-        <div className="border-b border-border pb-4 mb-6 flex items-center justify-between">
-          <div className="flex items-center gap-0">
+        <div className="border-b border-border pb-4 mb-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-0">
             {/* Nav links */}
-            <nav className="flex gap-6">
+            <nav className="flex flex-wrap gap-x-4 gap-y-2 lg:gap-6">
               {footerNavItems.map((item) => (
-                <a key={item} href="#" className="font-outfit font-semibold text-base text-neutral-700 hover:text-foreground leading-7">
+                <a key={item} href="#" className="font-outfit font-semibold text-sm lg:text-base text-neutral-700 hover:text-foreground leading-7">
                   {item}
                 </a>
               ))}
             </nav>
 
             {/* Social icons */}
-            <div className="flex items-center gap-10 ml-16">
+            <div className="flex items-center gap-8 lg:gap-10 lg:ml-16 mt-2 lg:mt-0">
               <a href="#" className="hover:opacity-70">
                 <FacebookIcon />
               </a>
@@ -142,13 +142,13 @@ export default function Footer() {
           </div>
 
           {/* Scroll to top */}
-          <button onClick={scrollToTop} className="hover:opacity-70 shrink-0">
+          <button onClick={scrollToTop} className="hover:opacity-70 shrink-0 self-end lg:self-auto">
             <ScrollToTopIcon />
           </button>
         </div>
 
         {/* Copyright and contact info */}
-        <div className="flex flex-col gap-8 font-outfit text-sm text-neutral-700">
+        <div className="flex flex-col gap-6 lg:gap-8 font-outfit text-sm text-neutral-700">
           <div>
             <p>Visas tiesības aizsargātas</p>
             <p>
@@ -160,7 +160,7 @@ export default function Footer() {
             <p>E-pasts: info@ecobaltiavide.lv</p>
             <p>Adrese: Getliņu iela 5, Rumbula, Stopiņu pagasts, Ropažu novads, LV-2121</p>
           </div>
-          <div className="flex flex-wrap gap-x-10 gap-y-2 text-sm">
+          <div className="flex flex-wrap gap-x-6 lg:gap-x-10 gap-y-2 text-sm">
             {policyLinks.map((link) => (
               <a key={link.label} href="#" className={`hover:underline ${link.underline ? "underline" : ""}`}>
                 {link.label}
