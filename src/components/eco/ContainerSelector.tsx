@@ -19,11 +19,7 @@ const containerSizes: ContainerSize[] = [
 ];
 
 function ContainerSizeCard({ size, isFirst, isLast }: { size: ContainerSize; isFirst: boolean; isLast: boolean }) {
-  const roundedClass = isFirst
-    ? "rounded-tl-3xl rounded-bl-3xl"
-    : isLast
-    ? "rounded-tr-3xl rounded-br-3xl"
-    : "";
+  const roundedClass = isFirst ? "rounded-tl-3xl rounded-bl-3xl" : isLast ? "rounded-tr-3xl rounded-br-3xl" : "";
 
   return (
     <div
@@ -79,7 +75,10 @@ export default function ContainerSelector() {
       {/* Container sizes + image */}
       <div className="flex flex-col gap-3">
         <h2 className="font-outfit font-bold text-2xl text-foreground leading-[38.4px]">Konteinera izmēru</h2>
-        <div className="relative rounded-3xl outline outline-1 outline-eco-lime overflow-hidden" style={{ height: 416 }}>
+        <div
+          className="relative rounded-3xl outline outline-1 outline-eco-lime overflow-hidden"
+          style={{ height: 416 }}
+        >
           {/* Size selector row */}
           <div className="flex absolute top-0 left-0 right-0 h-24 z-10">
             {containerSizes.map((size, i) => (
@@ -94,11 +93,7 @@ export default function ContainerSelector() {
 
           {/* Container image area */}
           <div className="absolute top-[95px] left-0 right-0 bottom-0 overflow-hidden flex items-center justify-center">
-            <img
-              src={containerImg}
-              alt="5m³ būvgružu konteiners"
-              className="h-[376px] object-contain"
-            />
+            <img src={containerImg} alt="5m³ būvgružu konteiners" className="h-[376px] object-contain" />
           </div>
 
           {/* Dimensions card */}
@@ -118,7 +113,10 @@ export default function ContainerSelector() {
           </div>
 
           {/* Navigation arrows */}
-          <div className="absolute top-[216px] left-0 right-0 px-6 flex justify-between items-center z-20" style={{ width: 787, left: '50%', transform: 'translateX(-50%)' }}>
+          <div
+            className="absolute top-[216px] left-0 right-0 px-6 flex justify-between items-center z-20"
+            style={{ width: 787, left: "50%", transform: "translateX(-50%)" }}
+          >
             <button>
               <ArrowLeftCircle />
             </button>
@@ -131,6 +129,16 @@ export default function ContainerSelector() {
           <p className="absolute bottom-3 left-5 font-outfit font-light text-base text-eco-light-gray z-20">
             *Attēlam ir ilustratīva nozīme
           </p>
+        </div>
+
+        {/* Side terms accordion */}
+        <div className="absolute left-0 bottom-0 -translate-x-[calc(50%-20px)] -rotate-90 origin-center">
+          <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 px-4 py-3">
+            <ChevronDownIcon className="size-5 rotate-90 text-primary-foreground" />
+            <span className="font-outfit font-semibold text-base whitespace-nowrap">
+              Papildu noteikumi un nosacījumi
+            </span>
+          </button>
         </div>
       </div>
     </div>
