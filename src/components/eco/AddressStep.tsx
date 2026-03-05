@@ -37,13 +37,13 @@ function ZoneRow({ zone }: { zone: PricingZone }) {
 /* ── Mobile map (w-80, h-72, scaled-down SVGs) ── */
 function MobileMap() {
   return (
-    <div className="w-80 h-72 relative rounded-3xl overflow-hidden">
+    <div className="w-full h-72 relative rounded-3xl overflow-hidden">
       <img
         src={mapImage}
         alt="Latvijas karte ar piegādes zonām"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="w-80 h-72 left-[-3.67px] top-[4.35px] absolute">
+      <div className="w-full h-72 left-[-3.67px] top-[4.35px] absolute">
         {/* Zone A - green */}
         <div className="left-[74.97px] top-[70.15px] absolute">
           <svg width="168" height="150" viewBox="0 0 168 150" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +176,7 @@ export default function AddressStep() {
       {/* Mobile layout: stacked, address → map → footnote → zones */}
       <div className="flex lg:hidden flex-col items-center gap-6 w-full">
         {/* Address input */}
-        <div className="w-80 flex flex-col gap-2">
+        <div className="w-full flex flex-col gap-2">
           <div className="px-6">
             <span className="font-outfit font-semibold text-base text-foreground">
               Izvēlieties konteinera piegādes adresi
@@ -208,7 +208,7 @@ export default function AddressStep() {
         </div>
 
         {/* Map */}
-        <div className="flex flex-col items-center gap-3 w-80">
+        <div className="flex flex-col items-center gap-3 w-full">
           <MobileMap />
           <p className="self-stretch font-outfit font-normal text-sm text-foreground leading-5">
             * Papildus maksa 2,50 EUR/km aprēķinot no C zonas robežas
@@ -216,7 +216,7 @@ export default function AddressStep() {
         </div>
 
         {/* Pricing zones */}
-        <div className="w-80 flex flex-col gap-3">
+        <div className="w-full flex flex-col gap-3">
           {pricingZones.map((zone) => (
             <ZoneRow key={zone.label} zone={zone} />
           ))}
