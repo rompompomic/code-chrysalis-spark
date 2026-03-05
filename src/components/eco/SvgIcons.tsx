@@ -103,11 +103,11 @@ export function ArrowRightCircle({ className = "size-14", disabled = false }: { 
   );
 }
 
-export function NavArrowLeftCircle({ className = "size-14" }: { className?: string }) {
+export function NavArrowLeftCircle({ className = "size-14", active = false }: { className?: string; active?: boolean }) {
   return (
     <svg className={className} viewBox="0 0 56 56" fill="none">
-      <rect width="56" height="56" rx="28" transform="matrix(-1 0 0 1 56 0)" fill="white" />
-      <path d="M40 26.5C40.8284 26.5 41.5 27.1716 41.5 28C41.5 28.8284 40.8284 29.5 40 29.5V28V26.5ZM14.9393 29.0607C14.3536 28.4749 14.3536 27.5251 14.9393 26.9393L24.4853 17.3934C25.0711 16.8076 26.0208 16.8076 26.6066 17.3934C27.1924 17.9792 27.1924 18.9289 26.6066 19.5147L18.1213 28L26.6066 36.4853C27.1924 37.0711 27.1924 38.0208 26.6066 38.6066C26.0208 39.1924 25.0711 39.1924 24.4853 38.6066L14.9393 29.0607ZM40 28V29.5L16 29.5V28V26.5L40 26.5V28Z" fill="#D8D8DA" />
+      <rect width="56" height="56" rx="28" transform="matrix(-1 0 0 1 56 0)" fill={active ? "#1D382B" : "white"} />
+      <path d="M40 26.5C40.8284 26.5 41.5 27.1716 41.5 28C41.5 28.8284 40.8284 29.5 40 29.5V28V26.5ZM14.9393 29.0607C14.3536 28.4749 14.3536 27.5251 14.9393 26.9393L24.4853 17.3934C25.0711 16.8076 26.0208 16.8076 26.6066 17.3934C27.1924 17.9792 27.1924 18.9289 26.6066 19.5147L18.1213 28L26.6066 36.4853C27.1924 37.0711 27.1924 38.0208 26.6066 38.6066C26.0208 39.1924 25.0711 39.1924 24.4853 38.6066L14.9393 29.0607ZM40 28V29.5L16 29.5V28V26.5L40 26.5V28Z" fill={active ? "white" : "#D8D8DA"} />
     </svg>
   );
 }
