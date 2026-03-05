@@ -16,7 +16,29 @@ import vannasIcon from "@/assets/waste-icons/vannas.png";
 import sadzivesIcon from "@/assets/waste-icons/sadzives.png";
 import buvgruzusIcon from "@/assets/waste-icons/buvgruzus.png";
 
-function ImgIcon({ src, alt }: { src: string; alt: string }) {
+function ImgIcon({ src, alt, color }: { src: string; alt: string; color?: string }) {
+  if (color) {
+    return (
+      <div
+        className="w-12 h-12 shrink-0"
+        style={{
+          minWidth: 48,
+          minHeight: 48,
+          backgroundColor: color,
+          WebkitMaskImage: `url(${src})`,
+          WebkitMaskSize: "contain",
+          WebkitMaskRepeat: "no-repeat",
+          WebkitMaskPosition: "center",
+          maskImage: `url(${src})`,
+          maskSize: "contain",
+          maskRepeat: "no-repeat",
+          maskPosition: "center",
+        }}
+        role="img"
+        aria-label={alt}
+      />
+    );
+  }
   return <img src={src} alt={alt} className="w-12 h-12 shrink-0 object-contain" style={{ minWidth: 48, minHeight: 48 }} />;
 }
 
@@ -217,42 +239,42 @@ function PlaceholderCircleIcon({ color }: { color: string }) {
 // === Data for Būvgružu ===
 
 const buvgruzuAllowed: { label: string; icon: React.ReactNode }[] = [
-  { label: "Asfaltu, darvu un darvas produktus – cietos atkritumus, kas rodas, atjaunojot ielu segumu", icon: <ImgIcon src={asfaltuIcon} alt="Asfaltu" /> },
+  { label: "Asfaltu, darvu un darvas produktus – cietos atkritumus, kas rodas, atjaunojot ielu segumu", icon: <ImgIcon src={asfaltuIcon} alt="Asfaltu" color="#007A42" /> },
   { label: "Betona, cementa un dzelzsbetona konstrukcijas", icon: <BetonaCementaIcon /> },
   { label: "Betona konstrukcijas", icon: <BetonaKonstrukcijasIcon /> },
-  { label: "Flīzes, keramikas un ģipša materiālus", icon: <ImgIcon src={flizesIcon} alt="Flīzes" /> },
+  { label: "Flīzes, keramikas un ģipša materiālus", icon: <ImgIcon src={flizesIcon} alt="Flīzes" color="#007A42" /> },
   { label: "Kokmateriālus", icon: <KokmaterialusIcon /> },
-  { label: "Ķieģeļus un bruģi", icon: <ImgIcon src={kiegelusIcon} alt="Ķieģeļus" /> },
-  { label: "Logu un durvju rāmjus ar un bez stikliem", icon: <ImgIcon src={loguIcon} alt="Logu" /> },
-  { label: "Metālu saturošas konstrukcijas (dušas, vannas, caurules, stangas, radiatori u.c.)", icon: <ImgIcon src={metaluIcon} alt="Metālu" /> },
+  { label: "Ķieģeļus un bruģi", icon: <ImgIcon src={kiegelusIcon} alt="Ķieģeļus" color="#007A42" /> },
+  { label: "Logu un durvju rāmjus ar un bez stikliem", icon: <ImgIcon src={loguIcon} alt="Logu" color="#007A42" /> },
+  { label: "Metālu saturošas konstrukcijas (dušas, vannas, caurules, stangas, radiatori u.c.)", icon: <ImgIcon src={metaluIcon} alt="Metālu" color="#007A42" /> },
 ];
 
 const buvgruzuProhibited: { label: string; icon: React.ReactNode }[] = [
-  { label: "Aerosolus, ķīmiskas vielas, krāsas un to iepakojumus", icon: <ImgIcon src={aerosolusIcon} alt="Aerosolus" /> },
+  { label: "Aerosolus, ķīmiskas vielas, krāsas un to iepakojumus", icon: <ImgIcon src={aerosolusIcon} alt="Aerosolus" color="#F16027" /> },
   { label: "Auto riepas un citas ar auto uzturēšanu saistītas preces un materiālus", icon: <AutoRiepasIcon /> },
   { label: "Akumulatorus un baterijas", icon: <AkumulatorusIcon /> },
-  { label: "Eļļas", icon: <ImgIcon src={ellasIcon} alt="Eļļas" /> },
+  { label: "Eļļas", icon: <ImgIcon src={ellasIcon} alt="Eļļas" color="#F16027" /> },
   { label: "Luminiscences spuldzes un termometrus", icon: <LuminiscencesIcon /> },
-  { label: "Pelnu, karstas ogles un izdedžus", icon: <ImgIcon src={pelnuIcon} alt="Pelnu" /> },
-  { label: "Šīferi", icon: <ImgIcon src={siferiIcon} alt="Šīferi" /> },
+  { label: "Pelnu, karstas ogles un izdedžus", icon: <ImgIcon src={pelnuIcon} alt="Pelnu" color="#F16027" /> },
+  { label: "Šīferi", icon: <ImgIcon src={siferiIcon} alt="Šīferi" color="#F16027" /> },
 ];
 
 // === Data for Lielgabarīta ===
 
 const lielgabaritaAllowed: { label: string; icon: React.ReactNode }[] = [
   { label: "Mēbeles – skapjus, galdus, gultas, krēslus, datorkrēslus, dīvānus u.c.", icon: <MebelesIcon /> },
-  { label: "Mājsaimniecības preces – spoguļus, gludināmos dēļus, paklājus, žalūzijas, matračus u.c.", icon: <ImgIcon src={majsaimniecibasIcon} alt="Mājsaimniecības preces" /> },
-  { label: "Bērnu inventāru – ratus, autosedeklīšus, šūpuļus, rotaļlietas, bērnu vannas, ragavas", icon: <ImgIcon src={bernuIcon} alt="Bērnu inventāru" /> },
-  { label: "Sporta inventāru – velosipēdus, skūterus, slēpes, nūjas u.c.", icon: <ImgIcon src={sportaIcon} alt="Sporta inventāru" /> },
-  { label: "Dzīvnieku inventāru – būrus, transportēšanas kastes u.c.", icon: <ImgIcon src={dzivniekuIcon} alt="Dzīvnieku inventāru" /> },
+  { label: "Mājsaimniecības preces – spoguļus, gludināmos dēļus, paklājus, žalūzijas, matračus u.c.", icon: <ImgIcon src={majsaimniecibasIcon} alt="Mājsaimniecības preces" color="#007A42" /> },
+  { label: "Bērnu inventāru – ratus, autosedeklīšus, šūpuļus, rotaļlietas, bērnu vannas, ragavas", icon: <ImgIcon src={bernuIcon} alt="Bērnu inventāru" color="#007A42" /> },
+  { label: "Sporta inventāru – velosipēdus, skūterus, slēpes, nūjas u.c.", icon: <ImgIcon src={sportaIcon} alt="Sporta inventāru" color="#007A42" /> },
+  { label: "Dzīvnieku inventāru – būrus, transportēšanas kastes u.c.", icon: <ImgIcon src={dzivniekuIcon} alt="Dzīvnieku inventāru" color="#007A42" /> },
 ];
 
 const lielgabaritaProhibited: { label: string; icon: React.ReactNode }[] = [
   { label: "Elektropreces, baterijas, datortehniku, sadzīves tehniku, cietos atkritumus", icon: <ElektroprecesIcon /> },
-  { label: "Vannas, dušas kabīnes un tualetes podus", icon: <ImgIcon src={vannasIcon} alt="Vannas" /> },
+  { label: "Vannas, dušas kabīnes un tualetes podus", icon: <ImgIcon src={vannasIcon} alt="Vannas" color="#F16027" /> },
   { label: "Auto riepas, akumulatorus u.c. auto detaļas", icon: <AutoDetaljasIcon /> },
-  { label: "Sadzīves ķīmiju – krāsas, lakas, šķīdinātājus, dzesēšanas šķidrumus u.c.", icon: <ImgIcon src={sadzivesIcon} alt="Sadzīves ķīmiju" /> },
-  { label: "Būvgružus", icon: <ImgIcon src={buvgruzusIcon} alt="Būvgružus" /> },
+  { label: "Sadzīves ķīmiju – krāsas, lakas, šķīdinātājus, dzesēšanas šķidrumus u.c.", icon: <ImgIcon src={sadzivesIcon} alt="Sadzīves ķīmiju" color="#F16027" /> },
+  { label: "Būvgružus", icon: <ImgIcon src={buvgruzusIcon} alt="Būvgružus" color="#F16027" /> },
 ];
 
 const headings: Record<ContainerType, string> = {
