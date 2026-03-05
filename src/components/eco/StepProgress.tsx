@@ -23,7 +23,7 @@ export default function StepProgress() {
             <span className="font-outfit text-xl text-eco-gray">{step.label}</span>
           </div>
           {i < steps.length - 1 && (
-            <div className="flex-1 h-px bg-eco-light-gray" />
+            <div className="flex-1 h-px outline outline-1 outline-[#D8D8DA]" />
           )}
         </div>
       ))}
