@@ -50,8 +50,6 @@ function BetonaKonstrukcijasIcon() {
   );
 }
 
-// FlizesIcon - now uses imported image
-
 function KokmaterialusIcon() {
   return (
     <svg className="size-12 shrink-0" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,8 +87,6 @@ function KokmaterialusIcon() {
     </svg>
   );
 }
-
-// KiegelusIcon, LoguIcon, MetaluIcon, AerosolusIcon - now use imported images
 
 function AutoRiepasIcon() {
   return (
@@ -130,8 +126,6 @@ function AkumulatorusIcon() {
   );
 }
 
-// EllasIcon - now uses imported image
-
 function LuminiscencesIcon() {
   return (
     <svg className="size-12 shrink-0" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -146,8 +140,6 @@ function LuminiscencesIcon() {
     </svg>
   );
 }
-
-// PelnuIcon, SiferiIcon - now use imported images
 
 const allowedItems: { label: string; icon: React.ReactNode }[] = [
   { label: "Asfaltu, darvu un darvas produktus – cietos atkritumus, kas rodas, atjaunojot ielu segumu", icon: <ImgIcon src={asfaltuIcon} alt="Asfaltu" /> },
@@ -172,13 +164,13 @@ const prohibitedItems: { label: string; icon: React.ReactNode }[] = [
 
 export default function WasteRules() {
   return (
-    <section className="bg-background px-[130px] py-14 w-full">
-      <div className="max-w-[1170px] flex flex-col gap-10">
-        <h2 className="font-outfit font-bold text-5xl text-foreground">
+    <section className="bg-background px-5 lg:px-[130px] py-8 lg:py-14 w-full">
+      <div className="max-w-[1170px] flex flex-col gap-6 lg:gap-10">
+        <h2 className="font-outfit font-bold text-2xl lg:text-5xl text-foreground uppercase">
           BŪVGRUŽU KONTEINERĀ IEVIETOT
         </h2>
 
-        <div className="flex gap-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Allowed */}
           <div className="flex-1 self-stretch p-5 rounded-3xl outline outline-1 outline-eco-green-text flex flex-col gap-6">
             <div className="flex flex-col gap-3">
@@ -217,7 +209,7 @@ export default function WasteRules() {
                 </div>
               ))}
             </div>
-            <p className="font-outfit text-base text-eco-gray leading-6">
+            <p className="font-outfit text-sm lg:text-base text-eco-gray leading-6">
               <span>* Šie ir bīstamie atkritumi. Par to nodošanu sazinies, zvanot </span>
               <span className="font-semibold">8717 </span>
               <span>vai rakstot </span>
