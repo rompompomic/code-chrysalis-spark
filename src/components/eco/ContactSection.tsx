@@ -36,7 +36,7 @@ export default function ContactSection() {
       </div>
 
       {/* Mobile decorative vector - smaller */}
-      <div className="absolute h-[712px] right-[-200px] top-[-40px] w-[700px] pointer-events-none lg:hidden">
+      <div className="absolute h-[712px] right-[-350px] top-[-40px] w-[700px] pointer-events-none lg:hidden">
         <div className="absolute inset-0">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1472.41 1424.13">
             <path
