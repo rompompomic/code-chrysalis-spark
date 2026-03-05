@@ -3,6 +3,7 @@ import Header from "@/components/eco/Header";
 import StepProgress from "@/components/eco/StepProgress";
 import ContainerSelector from "@/components/eco/ContainerSelector";
 import AddressStep from "@/components/eco/AddressStep";
+import PeriodStep from "@/components/eco/PeriodStep";
 import NavigationButtons from "@/components/eco/NavigationButtons";
 import WasteRules from "@/components/eco/WasteRules";
 import ContactSection from "@/components/eco/ContactSection";
@@ -14,7 +15,7 @@ export type ContainerType = "buvgruzu" | "lielgabarita";
 const stepTitles = [
   "1. Izvēlieties konteinera veidu un izmēru",
   "2. Izvēlieties adresi",
-  "3. Izmantošanas periods",
+  "3. Izvēlieties piegādes un izvešanas datumu",
   "4. Norēķini",
 ];
 
@@ -55,6 +56,9 @@ export default function Index() {
             )}
             {currentStep === 2 && (
               <AddressStep />
+            )}
+            {currentStep === 3 && (
+              <PeriodStep />
             )}
 
             <NavigationButtons currentStep={currentStep} onBack={handleBack} onForward={handleForward} />
