@@ -186,7 +186,7 @@ function OrderSummary() {
         </h3>
         <div className="self-stretch flex flex-col gap-2">
           {items.map((item, i) => (
-            <div key={i} className="self-stretch pb-2 border-b border-dashed border-foreground inline-flex justify-between items-start gap-4">
+            <div key={i} className="self-stretch pb-2 border-b border-dashed border-eco-gray inline-flex justify-between items-start gap-4">
               <span className="font-outfit text-sm text-eco-gray leading-5 flex-1">{item.label}</span>
               <span className="font-outfit text-sm text-eco-gray leading-5">{item.price}</span>
             </div>
