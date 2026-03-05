@@ -1,5 +1,13 @@
 import containerImg from "@/assets/container-5m3.png";
-import { InfoIcon, SealQuestionIcon, WallIcon, CouchIcon, ArrowLeftCircle, ArrowRightCircle } from "./SvgIcons";
+import {
+  InfoIcon,
+  ChevronDownIcon,
+  SealQuestionIcon,
+  WallIcon,
+  CouchIcon,
+  ArrowLeftCircle,
+  ArrowRightCircle,
+} from "./SvgIcons";
 
 interface ContainerSize {
   volume: string;
