@@ -61,7 +61,7 @@ export default function Index() {
           </div>
         </section>
 
-        <WasteRules containerType={containerType} onContainerTypeChange={setContainerType} />
+        {currentStep === 1 && <WasteRules containerType={containerType} />}
         <ContactSection />
         <Footer />
       </div>
