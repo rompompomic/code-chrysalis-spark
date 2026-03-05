@@ -1,4 +1,4 @@
-import { EcoLogo } from "./SvgIcons";
+import logoNew from "@/assets/logo-new.svg";
 
 const navItems = [
   "Par mums",
@@ -18,7 +18,7 @@ export default function Header() {
         <div className="flex items-center h-[70px] px-[120px]">
           {/* Logo */}
           <a href="/" className="shrink-0 ml-[50px]">
-            <EcoLogo className="h-[46px] w-auto" color="black" />
+            <img src={logoNew} alt="Eco Baltia Vide" className="h-[46px] w-auto" />
           </a>
 
           {/* Middle buttons */}
