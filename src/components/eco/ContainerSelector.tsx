@@ -145,11 +145,11 @@ export default function ContainerSelector({ containerType, onContainerTypeChange
             Būvgružu konteinera noma
           </button>
           <button
-            className={`font-outfit font-semibold text-base px-4 py-3 rounded-full flex items-center gap-2.5 transition-colors ${containerType === "lielgabarita" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
+            className={`font-outfit font-medium text-sm px-3 py-2 rounded-full flex items-center gap-2 transition-colors ${containerType === "lielgabarita" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
             onClick={() => onContainerTypeChange("lielgabarita")}
           >
             <CouchIcon />
-            Lielgabarīta atkritumu konteinera noma
+            <span className="pb-0.5">Lielgabarīta atkritumu konteinera noma</span>
           </button>
         </div>
       </div>
