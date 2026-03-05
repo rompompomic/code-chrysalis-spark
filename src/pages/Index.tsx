@@ -16,7 +16,7 @@ export type ContainerType = "buvgruzu" | "lielgabarita";
 const stepTitles = [
   "1. Izvēlieties konteinera veidu un izmēru",
   "2. Izvēlieties adresi",
-  "3. Izmantošanas periods",
+  "3. Izvēlieties piegādes un izvešanas datumu",
   "4. Informācija par pasūtītāju",
 ];
 
