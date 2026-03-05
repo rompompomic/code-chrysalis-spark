@@ -3,7 +3,6 @@ import Header from "@/components/eco/Header";
 import StepProgress from "@/components/eco/StepProgress";
 import ContainerSelector from "@/components/eco/ContainerSelector";
 import AddressStep from "@/components/eco/AddressStep";
-import PeriodStep from "@/components/eco/PeriodStep";
 import NavigationButtons from "@/components/eco/NavigationButtons";
 import WasteRules from "@/components/eco/WasteRules";
 import ContactSection from "@/components/eco/ContactSection";
@@ -15,8 +14,8 @@ export type ContainerType = "buvgruzu" | "lielgabarita";
 const stepTitles = [
   "1. Izvēlieties konteinera veidu un izmēru",
   "2. Izvēlieties adresi",
-  "3. Izvēlieties piegādes un izvešanas datumu",
-  "4. Norēķini",
+  "3. Izmantošanas periods",
+  "4. Informācija par pasūtītāju",
 ];
 
 export default function Index() {
@@ -34,7 +33,10 @@ export default function Index() {
         <section className="bg-background px-5 lg:px-[130px] py-8 lg:py-14 relative">
           {/* Side terms accordion - desktop only (rotated vertical) */}
           {currentStep === 1 && (
-            <div className="hidden lg:block absolute left-[72px] bottom-14 z-30" style={{ transform: "rotate(-90deg)", transformOrigin: "0 100%" }}>
+            <div
+              className="hidden lg:block absolute left-[72px] bottom-14 z-30"
+              style={{ transform: "rotate(-90deg)", transformOrigin: "0 100%" }}
+            >
               <button className="bg-primary text-primary-foreground rounded-full flex items-center gap-2.5 pl-3 pr-4 py-3">
                 <ChevronDownIcon className="size-5 text-primary-foreground" />
                 <span className="font-outfit font-semibold text-base whitespace-nowrap">
@@ -54,12 +56,7 @@ export default function Index() {
             {currentStep === 1 && (
               <ContainerSelector containerType={containerType} onContainerTypeChange={setContainerType} />
             )}
-            {currentStep === 2 && (
-              <AddressStep />
-            )}
-            {currentStep === 3 && (
-              <PeriodStep />
-            )}
+            {currentStep === 2 && <AddressStep />}
 
             <NavigationButtons currentStep={currentStep} onBack={handleBack} onForward={handleForward} />
           </div>
