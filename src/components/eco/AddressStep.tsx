@@ -208,7 +208,7 @@ export default function AddressStep() {
         </div>
 
         {/* Map */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col items-center gap-3 w-80">
           <MobileMap />
           <p className="self-stretch font-outfit font-normal text-sm text-foreground leading-5">
             * Papildus maksa 2,50 EUR/km aprēķinot no C zonas robežas
