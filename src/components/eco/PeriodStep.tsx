@@ -255,6 +255,8 @@ export default function PeriodStep() {
           startDate={startDate}
           endDate={endDate}
           onSelectDate={handleSelectDate}
+          showPrevArrow
+          onPrev={handlePrev}
           today={today}
         />
         <CalendarMonth
