@@ -112,23 +112,28 @@ export default function Footer() {
 
       {/* Footer content */}
       <div className="px-5 lg:px-[50px] pt-8 pb-10">
-        {/* Logo */}
-        <img src={logoNew} alt="Eco Baltia Vide" className="h-[36px] lg:h-[46px] w-auto mb-6 lg:mb-8" />
+        {/* Logo + Scroll-to-top row */}
+        <div className="flex items-start justify-between mb-8 lg:mb-8">
+          <img src={logoNew} alt="Eco Baltia Vide" className="h-[44px] lg:h-[46px] w-auto" />
+          <button onClick={scrollToTop} className="hover:opacity-70 shrink-0 lg:hidden mt-1">
+            <ScrollToTopIcon />
+          </button>
+        </div>
 
         {/* Nav + Social + Scroll-to-top row with border */}
-        <div className="border-b border-border pb-4 mb-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div className="border-b border-border pb-6 lg:pb-4 mb-8 lg:mb-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-0">
-            {/* Nav links */}
-            <nav className="flex flex-wrap gap-x-4 gap-y-2 lg:gap-6">
+            {/* Nav links - 2 column grid on mobile */}
+            <nav className="grid grid-cols-2 gap-x-8 gap-y-4 lg:flex lg:flex-wrap lg:gap-6">
               {footerNavItems.map((item) => (
-                <a key={item} href="#" className="font-outfit font-semibold text-sm lg:text-base text-neutral-700 hover:text-foreground leading-7">
+                <a key={item} href="#" className="font-outfit font-semibold text-lg lg:text-base text-neutral-700 hover:text-foreground leading-7">
                   {item}
                 </a>
               ))}
             </nav>
 
             {/* Social icons */}
-            <div className="flex items-center gap-8 lg:gap-10 lg:ml-16 mt-2 lg:mt-0">
+            <div className="flex items-center gap-10 lg:ml-16 mt-6 lg:mt-0">
               <a href="#" className="hover:opacity-70">
                 <FacebookIcon />
               </a>
@@ -141,14 +146,14 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Scroll to top */}
-          <button onClick={scrollToTop} className="hover:opacity-70 shrink-0 self-end lg:self-auto">
+          {/* Scroll to top - desktop only */}
+          <button onClick={scrollToTop} className="hover:opacity-70 shrink-0 hidden lg:block">
             <ScrollToTopIcon />
           </button>
         </div>
 
         {/* Copyright and contact info */}
-        <div className="flex flex-col gap-6 lg:gap-8 font-outfit text-sm text-neutral-700">
+        <div className="flex flex-col gap-8 font-outfit text-sm text-neutral-700">
           <div>
             <p>Visas tiesības aizsargātas</p>
             <p>
@@ -158,7 +163,7 @@ export default function Footer() {
           <div>
             <p>Tālrunis: 8717; 67 799 999</p>
             <p>E-pasts: info@ecobaltiavide.lv</p>
-            <p>Adrese: Getliņu iela 5, Rumbula, Stopiņu pagasts, Ropažu novads, LV-2121</p>
+            <p>Adrese: Getliņu iela 5, Rumbula, Stopiņu pagasts,<br />Ropažu novads, LV-2121</p>
           </div>
           <div className="flex flex-wrap gap-x-6 lg:gap-x-10 gap-y-2 text-sm">
             {policyLinks.map((link) => (
