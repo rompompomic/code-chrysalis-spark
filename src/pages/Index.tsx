@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/eco/Header";
 import StepProgress from "@/components/eco/StepProgress";
 import ContainerSelector from "@/components/eco/ContainerSelector";
@@ -7,7 +8,11 @@ import ContactSection from "@/components/eco/ContactSection";
 import Footer from "@/components/eco/Footer";
 import { ChevronDownIcon } from "@/components/eco/SvgIcons";
 
+export type ContainerType = "buvgruzu" | "lielgabarita";
+
 export default function Index() {
+  const [containerType, setContainerType] = useState<ContainerType>("buvgruzu");
+
   return (
     <div className="flex flex-col items-center w-full min-h-screen bg-background font-outfit">
       <div className="w-full max-w-[1440px]">
@@ -31,12 +36,12 @@ export default function Index() {
               1. Izvēlieties konteinera veidu un izmēru
             </h1>
 
-            <ContainerSelector />
+            <ContainerSelector containerType={containerType} onContainerTypeChange={setContainerType} />
             <NavigationButtons />
           </div>
         </section>
 
-        <WasteRules />
+        <WasteRules containerType={containerType} />
         <ContactSection />
         <Footer />
       </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { ContainerType } from "@/pages/Index";
 import container5m3 from "@/assets/containers/container-5m3.png";
 import container8m3 from "@/assets/containers/container-8m3.png";
 import container10m3 from "@/assets/containers/container-10m3.png";
@@ -118,7 +119,7 @@ function getMobileRoundedClass(index: number, total: number): string {
   return classes.join(" ");
 }
 
-export default function ContainerSelector() {
+export default function ContainerSelector({ containerType, onContainerTypeChange }: { containerType: ContainerType; onContainerTypeChange: (type: ContainerType) => void }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selected = containerSizes[selectedIndex];
 
@@ -136,11 +137,17 @@ export default function ContainerSelector() {
           <SealQuestionIcon />
         </div>
         <div className="flex flex-wrap gap-3">
-          <button className="bg-secondary text-foreground font-outfit font-semibold text-base px-4 py-3 rounded-full flex items-center gap-2">
+          <button
+            className={`font-outfit font-semibold text-base px-4 py-3 rounded-full flex items-center gap-2 transition-colors ${containerType === "buvgruzu" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
+            onClick={() => onContainerTypeChange("buvgruzu")}
+          >
             <WallIcon />
             Būvgružu konteinera noma
           </button>
-          <button className="bg-accent text-foreground font-outfit font-semibold text-base px-4 py-3 rounded-full flex items-center gap-2.5">
+          <button
+            className={`font-outfit font-semibold text-base px-4 py-3 rounded-full flex items-center gap-2.5 transition-colors ${containerType === "lielgabarita" ? "bg-secondary text-foreground" : "bg-accent text-foreground"}`}
+            onClick={() => onContainerTypeChange("lielgabarita")}
+          >
             <CouchIcon />
             Lielgabarīta atkritumu konteinera noma
           </button>
