@@ -6,7 +6,17 @@ interface StepProgressProps {
 
 const STARBURST_PATH = "M37.6723 22.3277L40 20L37.6723 17.6723L39.3178 14.8237L36.4646 13.1782L37.3174 10.0023L34.1415 9.14956V5.85849H30.8504L29.9977 2.68264L26.8218 3.53076L25.1763 0.682176L22.3231 2.32772L20 0L17.6723 2.32772L14.8237 0.682176L13.1782 3.53076L9.9977 2.68264L9.14956 5.85849H5.85849V9.14956L2.67804 10.0023L3.53077 13.1782L0.682176 14.8237L2.32772 17.6723L0 20L2.32772 22.3277L0.682176 25.1763L3.53077 26.8218L2.67804 30.0023L5.85849 30.8504V34.1415H9.14956L9.9977 37.322L13.1782 36.4692L14.8237 39.3178L17.6723 37.6723L20 40L22.3231 37.6723L25.1763 39.3178L26.8218 36.4692L29.9977 37.322L30.8504 34.1415H34.1415V30.8504L37.3174 30.0023L36.4646 26.8218L39.3178 25.1763L37.6723 22.3277Z";
 
-// Active location icon with white fill (used when step 2 is active)
+// Inactive container icon (peach starburst)
+function ContainerIconInactive({ className = "size-10" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 40 40" fill="none">
+      <path d={STARBURST_PATH} fill="#FDD9CB" />
+      <path d="M6.58594 15.5146L23.3223 11.0303L24.9685 12.6765M6.58594 15.5146L14.461 19.0663M6.58594 15.5146V19.7766M24.9685 12.6765L22.7232 16.5653M24.9685 12.6765L29.276 14.9294M22.7232 16.5653L14.461 19.0663M22.7232 16.5653L29.276 14.9294M14.461 19.0663V23.9216M6.58594 19.7766L14.461 23.9216M6.58594 19.7766L8.95484 24.8328L16.7401 28.9696M14.461 23.9216L32.2428 18.4813M14.461 23.9216L16.7401 28.9696M32.2428 18.4813L33.4128 16.8098L30.6549 14.3026L29.276 14.9294M32.2428 18.4813L28.7745 24.8328L16.7401 28.9696" stroke="#FE5F1E" strokeWidth="0.6" />
+    </svg>
+  );
+}
+
+// Active location icon (orange starburst, white fill)
 function LocationIconActive({ className = "size-10" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 40 40" fill="none">
@@ -17,16 +27,16 @@ function LocationIconActive({ className = "size-10" }: { className?: string }) {
 }
 
 interface Step {
-  icon: React.ReactNode;
-  activeIcon?: React.ReactNode;
+  activeIcon: React.ReactNode;
+  inactiveIcon: React.ReactNode;
   label: string;
 }
 
 const steps: Step[] = [
-  { icon: <ContainerIcon />, label: "Konteinera veidu un izmēru" },
-  { icon: <LocationIcon />, activeIcon: <LocationIconActive />, label: "Piegādes adrese" },
-  { icon: <CalendarIcon />, label: "Izmantošanas periods" },
-  { icon: <UserIcon />, label: "Norēķini" },
+  { activeIcon: <ContainerIcon />, inactiveIcon: <ContainerIconInactive />, label: "Konteinera veidu un izmēru" },
+  { activeIcon: <LocationIconActive />, inactiveIcon: <LocationIcon />, label: "Piegādes adrese" },
+  { activeIcon: <CalendarIcon />, inactiveIcon: <CalendarIcon />, label: "Izmantošanas periods" },
+  { activeIcon: <UserIcon />, inactiveIcon: <UserIcon />, label: "Norēķini" },
 ];
 
 export default function StepProgress({ currentStep = 1 }: StepProgressProps) {
@@ -34,8 +44,8 @@ export default function StepProgress({ currentStep = 1 }: StepProgressProps) {
     <div className="flex items-center gap-2 lg:gap-5 w-full overflow-x-auto bg-muted/20 lg:bg-transparent px-2 py-2 lg:px-0 lg:py-0 rounded-lg lg:rounded-none">
       {steps.map((step, i) => {
         const stepNumber = i + 1;
-        const isActive = stepNumber <= currentStep;
-        const icon = isActive && step.activeIcon ? step.activeIcon : step.icon;
+        const isActive = stepNumber === currentStep;
+        const icon = isActive ? step.activeIcon : step.inactiveIcon;
 
         return (
           <div key={step.label} className="contents">
